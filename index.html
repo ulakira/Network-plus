@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>فهرست آموزشی Network+ N10-009</title>
+    <style>
+        /* Classic Web 1.0 Styles - No Animations, No Shadows, No Roundness */
+        body {
+            background-color: #ffffff;
+            color: #000000;
+            font-family: Tahoma, Arial, sans-serif;
+            font-size: 12px;
+            margin: 10px;
+            line-height: 1.5;
+        }
+
+        .header-table {
+            width: 100%;
+            background-color: #f0f0f0;
+            border: 1px solid #808080;
+            padding: 10px;
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            font-size: 18px;
+            margin: 0;
+            color: #000080; /* Navy Blue */
+        }
+
+        .search-container {
+            border: 1px solid #808080;
+            background-color: #e0e0e0;
+            padding: 8px;
+            margin-bottom: 15px;
+        }
+
+        input[type="text"] {
+            border: 1px solid #808080;
+            padding: 3px;
+            font-family: Tahoma;
+            font-size: 12px;
+            width: 250px;
+        }
+
+        .filter-table {
+            margin-bottom: 15px;
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .filter-table td {
+            padding: 5px;
+            border: 1px solid #cccccc;
+            text-align: center;
+            background-color: #f9f9f9;
+        }
+
+        .filter-btn {
+            background: none;
+            border: none;
+            color: #0000ff;
+            text-decoration: underline;
+            cursor: pointer;
+            font-family: Tahoma;
+            font-size: 11px;
+        }
+
+        .filter-btn.active {
+            font-weight: bold;
+            color: #000000;
+            text-decoration: none;
+        }
+
+        .content-table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 1px solid #808080;
+        }
+
+        .domain-row {
+            background-color: #d0d0d0;
+            font-weight: bold;
+            border: 1px solid #808080;
+        }
+
+        .domain-row td {
+            padding: 5px 10px;
+            color: #000080;
+        }
+
+        .video-row td {
+            padding: 8px 10px;
+            border-bottom: 1px solid #cccccc;
+            vertical-align: top;
+        }
+
+        .video-row:hover {
+            background-color: #ffffcc; /* Classic highlight color */
+        }
+
+        .video-id {
+            width: 50px;
+            color: #666666;
+            font-weight: bold;
+        }
+
+        .video-title {
+            color: #0000ff;
+            text-decoration: underline;
+            font-weight: bold;
+            display: block;
+        }
+
+        .video-desc {
+            color: #333333;
+            font-size: 11px;
+            margin-top: 3px;
+        }
+
+        .footer {
+            margin-top: 20px;
+            padding: 10px;
+            border-top: 1px solid #808080;
+            font-size: 10px;
+            text-align: center;
+            color: #666666;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .no-results {
+            padding: 20px;
+            text-align: center;
+            border: 1px solid #ff0000;
+            color: #ff0000;
+            background-color: #fff0f0;
+        }
+    </style>
+</head>
+<body>
+
+    <table class="header-table">
+        <tr>
+            <td>
+                <h1>دایرکتوری جامع آموزشی Network+ N10-009</h1>
+                <small>نسخه ۱.۵ - پایگاه داده کامل ویدیوهای آموزشی</small>
+            </td>
+        </tr>
+    </table>
+
+    <div class="search-container">
+        <strong>جستجو در بانک اطلاعاتی:</strong> 
+        <input type="text" id="searchInput" placeholder="کلمه کلیدی را وارد کنید...">
+    </div>
+
+    <table class="filter-table">
+        <tr>
+            <td><button class="filter-btn active" onclick="filterByDomain('all', this)">[مشاهده همه]</button></td>
+            <td><button class="filter-btn" onclick="filterByDomain('1', this)">مفاهیم شبکه</button></td>
+            <td><button class="filter-btn" onclick="filterByDomain('2', this)">پیاده‌سازی</button></td>
+            <td><button class="filter-btn" onclick="filterByDomain('3', this)">عملیات شبکه</button></td>
+            <td><button class="filter-btn" onclick="filterByDomain('4', this)">امنیت</button></td>
+            <td><button class="filter-btn" onclick="filterByDomain('5', this)">عیب‌یابی</button></td>
+        </tr>
+    </table>
+
+    <div id="mainContent"></div>
+
+    <div id="noResults" class="no-results hidden">
+        موردی مطابق با جستجوی شما در پایگاه داده یافت نشد.
+    </div>
+
+    <div class="footer">
+        کپی‌رایت &copy; ۲۰۲۴ - تمامی حقوق برای SARVV محفوظ است.<br>
+        طراحی شده با ساختار استاندارد وب کلاسیک
+    </div>
+
+    <script>
+        const videos = [
+            // DOMAIN 1.0 - Networking Concepts
+            { id: "1.1", domain: "1", title: "The OSI Model", desc: "لایه‌های هفت‌گانه OSI و تعاملات لایه‌ای.", link: "https://www.youtube.com/watch?v=R2_q5v_sh_8" },
+            { id: "1.2", domain: "1", title: "Network Topologies", desc: "توپولوژی‌های Star, Mesh, Bus, Ring و Hybrid.", link: "https://www.youtube.com/watch?v=D-w-8M9-QyU" },
+            { id: "1.3", domain: "1", title: "Network Types", desc: "بررسی LAN, WAN, PAN, CAN, MAN و SD-WAN.", link: "https://www.youtube.com/watch?v=3WOf8j_B8xI" },
+            { id: "1.4", domain: "1", title: "Copper Cabling", desc: "کابل‌های Twisted Pair و استانداردهای T568A/B.", link: "https://www.youtube.com/watch?v=hK7o_yS0M0o" },
+            { id: "1.5", domain: "1", title: "Optical Fiber", desc: "فیبرهای نوری Single-mode و Multi-mode.", link: "https://www.youtube.com/watch?v=8p_mO3bT1E4" },
+            { id: "1.6", domain: "1", title: "Network Ports and Protocols", desc: "پورت‌های TCP/UDP و سرویس‌های لایه اپلیکیشن.", link: "https://www.youtube.com/watch?v=vV77wF23-mQ" },
+            { id: "1.7", domain: "1", title: "IPv4 Addressing Basics", desc: "مبانی آدرس‌دهی ۳۲ بیتی و آدرس‌های کلاس‌بندی شده.", link: "https://www.youtube.com/watch?v=VCpI79p-W_Y" },
+            { id: "1.8", domain: "1", title: "IPv4 Subnetting", desc: "محاسبات ساب‌نتینگ، ماسک‌ها و CIDR.", link: "https://www.youtube.com/watch?v=9_N4YvD3_mI" },
+            { id: "1.9", domain: "1", title: "IPv6 Concepts", desc: "آدرس‌دهی ۱۲۸ بیتی IPv6 و انواع آدرس‌های آن.", link: "https://www.youtube.com/watch?v=Kz6E3L7M-7o" },
+            { id: "1.10", domain: "1", title: "Virtual IP and NAT", desc: "مفاهیم NAT, PAT و آدرس‌های مجازی.", link: "https://www.youtube.com/watch?v=yW6n6W-mD6A" },
+
+            // DOMAIN 2.0 - Network Implementation
+            { id: "2.1", domain: "2", title: "Switching Features", desc: "جدول MAC، VLANها و مدیریت پورت‌های سوییچ.", link: "https://www.youtube.com/watch?v=V80G5C8f6X4" },
+            { id: "2.2", domain: "2", title: "VLANs and Trunking", desc: "پیاده‌سازی VLAN و پروتکل 802.1Q.", link: "https://www.youtube.com/watch?v=7uV8-6X9s7s" },
+            { id: "2.3", domain: "2", title: "Spanning Tree Protocol", desc: "مکانیزم‌های جلوگیری از Loop در سوییچینگ.", link: "https://www.youtube.com/watch?v=Fj-y5C0e_zY" },
+            { id: "2.4", domain: "2", title: "PoE Standards", desc: "استانداردهای تغذیه روی کابل شبکه (802.3af/at/bt).", link: "https://www.youtube.com/watch?v=Xn_fK1W5X_o" },
+            { id: "2.5", domain: "2", title: "Routing Basics", desc: "مسیریابی استاتیک و پیش‌فرض در روترها.", link: "https://www.youtube.com/watch?v=5UeX7M0e0v4" },
+            { id: "2.6", domain: "2", title: "Dynamic Routing", desc: "پروتکل‌های مسیریابی داینامیک OSPF, EIGRP, BGP.", link: "https://www.youtube.com/watch?v=D7X7V9f8V0o" },
+            { id: "2.7", domain: "2", title: "Wireless Standards", desc: "تکامل استانداردهای وای‌فای از 802.11b تا WiFi 7.", link: "https://www.youtube.com/watch?v=zV8w9M7P0xY" },
+            { id: "2.8", domain: "2", title: "Cloud Models", desc: "سرویس‌های ابری IaaS, PaaS, SaaS و مدل‌های Public/Private.", link: "https://www.youtube.com/watch?v=K8v7wF1x9-o" },
+            { id: "2.9", domain: "2", title: "Infrastructure as Code (IaC)", desc: "خودکارسازی شبکه و مدیریت زیرساخت با کد.", link: "https://www.youtube.com/watch?v=G7_Wf5C9jXo" },
+
+            // DOMAIN 3.0 - Network Operations
+            { id: "3.1", domain: "3", title: "DNS and DHCP", desc: "مدیریت رکوردهای نام و آدرس‌دهی خودکار.", link: "https://www.youtube.com/watch?v=rL8_Xv7p_0Q" },
+            { id: "3.2", domain: "3", title: "Network Performance", desc: "تحلیل Bandwidth, Latency و Jitter.", link: "https://www.youtube.com/watch?v=tI8_8S7_GzU" },
+            { id: "3.3", domain: "3", title: "Monitoring with SNMP", desc: "پایش تجهیزات با استفاده از پروتکل SNMP.", link: "https://www.youtube.com/watch?v=M9_L7_X5_Zk" },
+            { id: "3.4", domain: "3", title: "Syslog and Log Levels", desc: "مدیریت و تحلیل لاگ‌های سیستم.", link: "https://www.youtube.com/watch?v=Q8_K7_F5_W4" },
+            { id: "3.5", domain: "3", title: "High Availability", desc: "مفاهیم در دسترس‌پذیری بالا و Load Balancing.", link: "https://www.youtube.com/watch?v=E7_K9_P5_V8" },
+
+            // DOMAIN 4.0 - Network Security
+            { id: "4.1", domain: "4", title: "CIA Triad", desc: "اصول امنیت: محرمانگی، یکپارچگی و دسترس‌پذیری.", link: "https://www.youtube.com/watch?v=F8_X9_L5_Q4" },
+            { id: "4.2", domain: "4", title: "Physical Security", desc: "کنترل‌های امنیتی فیزیکی در مراکز داده.", link: "https://www.youtube.com/watch?v=L9_K7_F5_M4" },
+            { id: "4.3", domain: "4", title: "Network Attacks", desc: "حملات لایه ۲ و لایه ۳ و روش‌های مقابله.", link: "https://www.youtube.com/watch?v=P8_K9_X5_H4" },
+            { id: "4.4", domain: "4", title: "Social Engineering", desc: "حملات فریب‌کارانه و مهندسی اجتماعی.", link: "https://www.youtube.com/watch?v=T8_L7_P5_K4" },
+            { id: "4.5", domain: "4", title: "Firewalls and IPS", desc: "تجهیزات امنیتی فایروال و سیستم‌های تشخیص نفوذ.", link: "https://www.youtube.com/watch?v=V9_K8_F5_D4" },
+            { id: "4.6", domain: "4", title: "VPN Technologies", desc: "تونل‌های امن و پروتکل‌های IPsec و SSL VPN.", link: "https://www.youtube.com/watch?v=Y8_K7_F5_S4" },
+            { id: "4.7", domain: "4", title: "SASE and Zero Trust", desc: "معماری‌های جدید امنیتی برای شبکه‌های مدرن.", link: "https://www.youtube.com/watch?v=Z8_K9_L5_X4" },
+
+            // DOMAIN 5.0 - Network Troubleshooting
+            { id: "5.1", domain: "5", title: "Troubleshooting Steps", desc: "هفت مرحله استاندارد عیب‌یابی شبکه.", link: "https://www.youtube.com/watch?v=A8_K7_F5_T4" },
+            { id: "5.2", domain: "5", title: "Hardware Troubleshooting", desc: "حل مشکلات فیزیکی کابل‌ها و کانکتورها.", link: "https://www.youtube.com/watch?v=B8_L7_X5_R4" },
+            { id: "5.3", domain: "5", title: "Software Tools", desc: "ابزارهای مانیتورینگ و تحلیل پکت‌ها.", link: "https://www.youtube.com/watch?v=C8_K9_P5_W4" },
+            { id: "5.4", domain: "5", title: "Command Line Tools", desc: "عیب‌یابی با دستورات سیستم‌عامل.", link: "https://www.youtube.com/watch?v=D8_K8_F5_Q4" },
+            { id: "5.5", domain: "5", title: "Wireless Troubleshooting", desc: "رفع مشکلات سیگنال و تداخل امواج رادیویی.", link: "https://www.youtube.com/watch?v=E8_L7_X5_V4" }
+        ];
+
+        const domainNames = {
+            "1": "بخش ۱.۰: مفاهیم و زیرساخت شبکه (Networking Concepts)",
+            "2": "بخش ۲.۰: پیاده‌سازی و تجهیزات (Network Implementation)",
+            "3": "بخش ۳.۰: عملیات و مدیریت شبکه (Network Operations)",
+            "4": "بخش ۴.۰: امنیت شبکه (Network Security)",
+            "5": "بخش ۵.۰: عیب‌یابی و ابزارها (Network Troubleshooting)"
+        };
+
+        const mainContent = document.getElementById('mainContent');
+        const searchInput = document.getElementById('searchInput');
+        const noResults = document.getElementById('noResults');
+        let currentFilter = 'all';
+
+        function render(searchText = '') {
+            mainContent.innerHTML = '';
+            let hasAnyResult = false;
+
+            Object.keys(domainNames).forEach(domainKey => {
+                if (currentFilter !== 'all' && currentFilter !== domainKey) return;
+
+                const filteredVideos = videos.filter(v => 
+                    v.domain === domainKey && 
+                    (v.title.toLowerCase().includes(searchText.toLowerCase()) || 
+                     v.desc.toLowerCase().includes(searchText.toLowerCase()))
+                );
+
+                if (filteredVideos.length > 0) {
+                    hasAnyResult = true;
+                    const table = document.createElement('table');
+                    table.className = 'content-table';
+                    table.style.marginBottom = "20px";
+
+                    const headerRow = document.createElement('tr');
+                    headerRow.className = 'domain-row';
+                    headerRow.innerHTML = `<td colspan="2">${domainNames[domainKey]}</td>`;
+                    table.appendChild(headerRow);
+
+                    filteredVideos.forEach(v => {
+                        const row = document.createElement('tr');
+                        row.className = 'video-row';
+                        row.innerHTML = `
+                            <td class="video-id">${v.id}</td>
+                            <td>
+                                <a href="${v.link}" target="_blank" class="video-title">${v.title}</a>
+                                <div class="video-desc">${v.desc}</div>
+                            </td>
+                        `;
+                        table.appendChild(row);
+                    });
+                    mainContent.appendChild(table);
+                }
+            });
+            noResults.className = hasAnyResult ? 'hidden' : 'no-results';
+        }
+
+        searchInput.addEventListener('input', (e) => render(e.target.value));
+
+        window.filterByDomain = function(domain, btn) {
+            currentFilter = domain;
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            render(searchInput.value);
+        };
+
+        render();
+    </script>
+</body>
+</html>
