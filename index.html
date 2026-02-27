@@ -3,296 +3,720 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>فهرست آموزشی Network+ N10-009</title>
+    <title>SARVV — Professor Messer N10-009 Network+ Complete Index</title>
     <style>
-        /* Classic Web 1.0 Styles - No Animations, No Shadows, No Roundness */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
         body {
-            background-color: #ffffff;
-            color: #000000;
-            font-family: Tahoma, Arial, sans-serif;
-            font-size: 12px;
-            margin: 10px;
+            font-family: "Tahoma", "Verdana", "Arial", sans-serif;
+            font-size: 13px;
+            background-color: #f6f6f6;
+            color: #202020;
             line-height: 1.5;
         }
 
-        .header-table {
-            width: 100%;
-            background-color: #f0f0f0;
-            border: 1px solid #808080;
-            padding: 10px;
-            margin-bottom: 15px;
+        a { color: #0645ad; text-decoration: underline; }
+        a:visited { color: #0b0080; }
+        a:hover { text-decoration: underline; color: #0645ad; }
+
+        #page-wrapper {
+            max-width: 1060px;
+            margin: 0 auto;
+            padding: 0 12px 40px;
         }
 
-        h1 {
-            font-size: 18px;
-            margin: 0;
-            color: #000080; /* Navy Blue */
+        /* ── Header ── */
+        #site-header {
+            border-bottom: 1px solid #a2a9b1;
+            padding: 14px 0 10px;
+            margin-bottom: 12px;
         }
 
-        .search-container {
-            border: 1px solid #808080;
-            background-color: #e0e0e0;
-            padding: 8px;
-            margin-bottom: 15px;
+        #site-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #202020;
+            font-family: "Times New Roman", serif;
         }
 
-        input[type="text"] {
-            border: 1px solid #808080;
-            padding: 3px;
-            font-family: Tahoma;
+        #site-title span {
+            color: #54595d;
+            font-size: 13px;
+            font-weight: normal;
+            font-family: "Tahoma", sans-serif;
+            margin-right: 10px;
+        }
+
+        #site-tagline {
             font-size: 12px;
-            width: 250px;
-        }
-
-        .filter-table {
-            margin-bottom: 15px;
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        .filter-table td {
-            padding: 5px;
-            border: 1px solid #cccccc;
-            text-align: center;
-            background-color: #f9f9f9;
-        }
-
-        .filter-btn {
-            background: none;
-            border: none;
-            color: #0000ff;
-            text-decoration: underline;
-            cursor: pointer;
-            font-family: Tahoma;
-            font-size: 11px;
-        }
-
-        .filter-btn.active {
-            font-weight: bold;
-            color: #000000;
-            text-decoration: none;
-        }
-
-        .content-table {
-            width: 100%;
-            border-collapse: collapse;
-            border: 1px solid #808080;
-        }
-
-        .domain-row {
-            background-color: #d0d0d0;
-            font-weight: bold;
-            border: 1px solid #808080;
-        }
-
-        .domain-row td {
-            padding: 5px 10px;
-            color: #000080;
-        }
-
-        .video-row td {
-            padding: 8px 10px;
-            border-bottom: 1px solid #cccccc;
-            vertical-align: top;
-        }
-
-        .video-row:hover {
-            background-color: #ffffcc; /* Classic highlight color */
-        }
-
-        .video-id {
-            width: 50px;
-            color: #666666;
-            font-weight: bold;
-        }
-
-        .video-title {
-            color: #0000ff;
-            text-decoration: underline;
-            font-weight: bold;
-            display: block;
-        }
-
-        .video-desc {
-            color: #333333;
-            font-size: 11px;
+            color: #54595d;
             margin-top: 3px;
         }
 
-        .footer {
+        /* ── Notice bar ── */
+        #notice-bar {
+            background: #eaf3fb;
+            border: 1px solid #a2a9b1;
+            padding: 6px 10px;
+            margin-bottom: 12px;
+            font-size: 12px;
+        }
+
+        /* ── TOC ── */
+        #toc {
+            display: inline-block;
+            background: #f8f9fa;
+            border: 1px solid #a2a9b1;
+            padding: 10px 16px 12px;
+            margin-bottom: 16px;
+            font-size: 12px;
+            min-width: 220px;
+        }
+
+        #toc-title {
+            font-weight: bold;
+            font-size: 13px;
+            margin-bottom: 6px;
+            color: #202020;
+        }
+
+        #toc ol { padding-right: 20px; margin: 0; }
+        #toc ol li { margin: 3px 0; }
+        #toc a { text-decoration: none; color: #0645ad; }
+        #toc a:hover { text-decoration: underline; }
+
+        /* ── Controls ── */
+        #controls { margin-bottom: 14px; }
+
+        #controls table { border: none; background: none; }
+        #controls td { border: none; padding: 3px 6px 3px 0; vertical-align: middle; }
+
+        #search-label { font-size: 12px; font-weight: bold; white-space: nowrap; }
+
+        #searchInput {
+            font-family: "Tahoma", "Verdana", sans-serif;
+            font-size: 13px;
+            padding: 3px 6px;
+            border: 1px solid #a2a9b1;
+            background: #fff;
+            color: #202020;
+            width: 340px;
+            outline: none;
+        }
+
+        #searchInput:focus { border-color: #54595d; }
+
+        .go-btn {
+            font-family: "Tahoma", sans-serif;
+            font-size: 12px;
+            padding: 3px 10px;
+            border: 1px solid #a2a9b1;
+            background: #f8f9fa;
+            color: #202020;
+            cursor: pointer;
+        }
+
+        .go-btn:hover { background: #eaf3fb; }
+
+        #filter-row { margin-top: 8px; font-size: 12px; color: #54595d; }
+        #filter-row strong { color: #202020; }
+        #filter-row a {
+            margin-left: 10px;
+            color: #0645ad;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        #filter-row a:hover { text-decoration: underline; }
+        #filter-row a.active-filter { font-weight: bold; color: #202020; cursor: default; }
+
+        #result-info { font-size: 12px; color: #54595d; margin-top: 6px; font-style: italic; }
+
+        /* ── Section heading (h2) ── */
+        .section-heading {
+            font-family: "Times New Roman", serif;
+            font-size: 19px;
+            font-weight: normal;
+            border-bottom: 1px solid #a2a9b1;
+            padding-bottom: 4px;
+            margin-top: 24px;
+            margin-bottom: 2px;
+            color: #202020;
+        }
+
+        /* ── Sub-section heading (h3) ── */
+        .subsection-heading {
+            font-family: "Tahoma", "Verdana", sans-serif;
+            font-size: 13px;
+            font-weight: bold;
+            color: #202020;
+            background: #eaecf0;
+            border-right: 3px solid #54595d;
+            padding: 4px 8px;
+            margin-top: 14px;
+            margin-bottom: 0;
+        }
+
+        /* ── Data table ── */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+            margin-bottom: 4px;
+        }
+
+        .data-table th {
+            background: #eaecf0;
+            border: 1px solid #a2a9b1;
+            padding: 4px 10px;
+            text-align: right;
+            font-size: 11px;
+            font-weight: bold;
+            color: #202020;
+        }
+
+        .data-table td {
+            border: 1px solid #a2a9b1;
+            padding: 6px 10px;
+            vertical-align: top;
+            text-align: right;
+            background: #fff;
+        }
+
+        .data-table tbody tr:nth-child(even) td { background: #f8f9fa; }
+        .data-table tbody tr:hover td { background: #eaf3fb; }
+
+        .td-id {
+            font-family: "Courier New", monospace;
+            font-size: 11px;
+            font-weight: bold;
+            color: #202020;
+            width: 62px;
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        .td-dur {
+            font-family: "Courier New", monospace;
+            font-size: 11px;
+            color: #54595d;
+            width: 52px;
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        .td-topic a {
+            font-size: 13px;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        .td-desc { font-size: 12px; color: #54595d; line-height: 1.55; }
+
+        /* ── No results ── */
+        #no-results {
+            display: none;
+            background: #fff;
+            border: 1px solid #a2a9b1;
+            padding: 30px;
+            text-align: center;
+            color: #54595d;
+            font-size: 13px;
             margin-top: 20px;
-            padding: 10px;
-            border-top: 1px solid #808080;
-            font-size: 10px;
-            text-align: center;
-            color: #666666;
         }
 
-        .hidden {
-            display: none !important;
+        #no-results.show { display: block; }
+
+        /* ── Footer ── */
+        #page-footer {
+            border-top: 1px solid #a2a9b1;
+            margin-top: 30px;
+            padding-top: 10px;
+            font-size: 11px;
+            color: #54595d;
+            text-align: center;
+            line-height: 1.8;
         }
 
-        .no-results {
-            padding: 20px;
-            text-align: center;
-            border: 1px solid #ff0000;
-            color: #ff0000;
-            background-color: #fff0f0;
-        }
+        #page-footer a { color: #0645ad; font-size: 11px; }
     </style>
 </head>
 <body>
+<div id="page-wrapper">
 
-    <table class="header-table">
-        <tr>
-            <td>
-                <h1>دایرکتوری جامع آموزشی Network+ N10-009</h1>
-                <small>نسخه ۱.۵ - پایگاه داده کامل ویدیوهای آموزشی</small>
-            </td>
-        </tr>
-    </table>
-
-    <div class="search-container">
-        <strong>جستجو در بانک اطلاعاتی:</strong> 
-        <input type="text" id="searchInput" placeholder="کلمه کلیدی را وارد کنید...">
+    <div id="site-header">
+        <div id="site-title">
+            SARVV — Professor Messer N10-009 Network+ Index
+            <span>فهرست کامل ویدیوها</span>
+        </div>
+        <div id="site-tagline">
+            CompTIA Network+ N10-009 · Professor Messer · 87 Videos · 12 hours 55 minutes
+        </div>
     </div>
 
-    <table class="filter-table">
-        <tr>
-            <td><button class="filter-btn active" onclick="filterByDomain('all', this)">[مشاهده همه]</button></td>
-            <td><button class="filter-btn" onclick="filterByDomain('1', this)">مفاهیم شبکه</button></td>
-            <td><button class="filter-btn" onclick="filterByDomain('2', this)">پیاده‌سازی</button></td>
-            <td><button class="filter-btn" onclick="filterByDomain('3', this)">عملیات شبکه</button></td>
-            <td><button class="filter-btn" onclick="filterByDomain('4', this)">امنیت</button></td>
-            <td><button class="filter-btn" onclick="filterByDomain('5', this)">عیب‌یابی</button></td>
-        </tr>
-    </table>
-
-    <div id="mainContent"></div>
-
-    <div id="noResults" class="no-results hidden">
-        موردی مطابق با جستجوی شما در پایگاه داده یافت نشد.
+    <div id="notice-bar">
+        این فهرست شامل تمام <strong>۸۷ ویدیو</strong> از دوره رایگان <strong>Professor Messer N10-009 Network+</strong> است.
+        تمام لینک‌ها به صفحه اصلی ویدیو در سایت professormesser.com اشاره می‌کنند.
     </div>
 
-    <div class="footer">
-        کپی‌رایت &copy; ۲۰۲۴ - تمامی حقوق برای SARVV محفوظ است.<br>
-        طراحی شده با ساختار استاندارد وب کلاسیک
+    <div id="toc">
+        <div id="toc-title">فهرست مطالب (Contents)</div>
+        <ol>
+            <li><a href="#sec-0">Section 0 — Introduction</a></li>
+            <li><a href="#sec-1">Section 1 — Networking Concepts</a></li>
+            <li><a href="#sec-2">Section 2 — Network Implementation</a></li>
+            <li><a href="#sec-3">Section 3 — Network Operations</a></li>
+            <li><a href="#sec-4">Section 4 — Network Security</a></li>
+            <li><a href="#sec-5">Section 5 — Network Troubleshooting</a></li>
+        </ol>
     </div>
 
-    <script>
-        const videos = [
-            // DOMAIN 1.0 - Networking Concepts
-            { id: "1.1", domain: "1", title: "The OSI Model", desc: "لایه‌های هفت‌گانه OSI و تعاملات لایه‌ای.", link: "https://www.youtube.com/watch?v=R2_q5v_sh_8" },
-            { id: "1.2", domain: "1", title: "Network Topologies", desc: "توپولوژی‌های Star, Mesh, Bus, Ring و Hybrid.", link: "https://www.youtube.com/watch?v=D-w-8M9-QyU" },
-            { id: "1.3", domain: "1", title: "Network Types", desc: "بررسی LAN, WAN, PAN, CAN, MAN و SD-WAN.", link: "https://www.youtube.com/watch?v=3WOf8j_B8xI" },
-            { id: "1.4", domain: "1", title: "Copper Cabling", desc: "کابل‌های Twisted Pair و استانداردهای T568A/B.", link: "https://www.youtube.com/watch?v=hK7o_yS0M0o" },
-            { id: "1.5", domain: "1", title: "Optical Fiber", desc: "فیبرهای نوری Single-mode و Multi-mode.", link: "https://www.youtube.com/watch?v=8p_mO3bT1E4" },
-            { id: "1.6", domain: "1", title: "Network Ports and Protocols", desc: "پورت‌های TCP/UDP و سرویس‌های لایه اپلیکیشن.", link: "https://www.youtube.com/watch?v=vV77wF23-mQ" },
-            { id: "1.7", domain: "1", title: "IPv4 Addressing Basics", desc: "مبانی آدرس‌دهی ۳۲ بیتی و آدرس‌های کلاس‌بندی شده.", link: "https://www.youtube.com/watch?v=VCpI79p-W_Y" },
-            { id: "1.8", domain: "1", title: "IPv4 Subnetting", desc: "محاسبات ساب‌نتینگ، ماسک‌ها و CIDR.", link: "https://www.youtube.com/watch?v=9_N4YvD3_mI" },
-            { id: "1.9", domain: "1", title: "IPv6 Concepts", desc: "آدرس‌دهی ۱۲۸ بیتی IPv6 و انواع آدرس‌های آن.", link: "https://www.youtube.com/watch?v=Kz6E3L7M-7o" },
-            { id: "1.10", domain: "1", title: "Virtual IP and NAT", desc: "مفاهیم NAT, PAT و آدرس‌های مجازی.", link: "https://www.youtube.com/watch?v=yW6n6W-mD6A" },
+    <div id="controls">
+        <table>
+            <tr>
+                <td><span id="search-label">جستجو:</span></td>
+                <td><input type="text" id="searchInput" placeholder="نام ویدیو، شناسه، یا توضیحات..."></td>
+                <td>
+                    <button class="go-btn" onclick="render()">Go</button>
+                    <button class="go-btn" onclick="document.getElementById('searchInput').value=''; render()">Clear</button>
+                </td>
+            </tr>
+        </table>
+        <div id="filter-row">
+            <strong>فیلتر بخش:</strong>
+            <a class="active-filter" onclick="setFilter('all',this)">همه</a>
+            <a onclick="setFilter('0',this)">0 — Intro</a>
+            <a onclick="setFilter('1',this)">1 — Concepts</a>
+            <a onclick="setFilter('2',this)">2 — Implementation</a>
+            <a onclick="setFilter('3',this)">3 — Operations</a>
+            <a onclick="setFilter('4',this)">4 — Security</a>
+            <a onclick="setFilter('5',this)">5 — Troubleshooting</a>
+        </div>
+        <div id="result-info">در حال نمایش ۸۷ ویدیو.</div>
+    </div>
 
-            // DOMAIN 2.0 - Network Implementation
-            { id: "2.1", domain: "2", title: "Switching Features", desc: "جدول MAC، VLANها و مدیریت پورت‌های سوییچ.", link: "https://www.youtube.com/watch?v=V80G5C8f6X4" },
-            { id: "2.2", domain: "2", title: "VLANs and Trunking", desc: "پیاده‌سازی VLAN و پروتکل 802.1Q.", link: "https://www.youtube.com/watch?v=7uV8-6X9s7s" },
-            { id: "2.3", domain: "2", title: "Spanning Tree Protocol", desc: "مکانیزم‌های جلوگیری از Loop در سوییچینگ.", link: "https://www.youtube.com/watch?v=Fj-y5C0e_zY" },
-            { id: "2.4", domain: "2", title: "PoE Standards", desc: "استانداردهای تغذیه روی کابل شبکه (802.3af/at/bt).", link: "https://www.youtube.com/watch?v=Xn_fK1W5X_o" },
-            { id: "2.5", domain: "2", title: "Routing Basics", desc: "مسیریابی استاتیک و پیش‌فرض در روترها.", link: "https://www.youtube.com/watch?v=5UeX7M0e0v4" },
-            { id: "2.6", domain: "2", title: "Dynamic Routing", desc: "پروتکل‌های مسیریابی داینامیک OSPF, EIGRP, BGP.", link: "https://www.youtube.com/watch?v=D7X7V9f8V0o" },
-            { id: "2.7", domain: "2", title: "Wireless Standards", desc: "تکامل استانداردهای وای‌فای از 802.11b تا WiFi 7.", link: "https://www.youtube.com/watch?v=zV8w9M7P0xY" },
-            { id: "2.8", domain: "2", title: "Cloud Models", desc: "سرویس‌های ابری IaaS, PaaS, SaaS و مدل‌های Public/Private.", link: "https://www.youtube.com/watch?v=K8v7wF1x9-o" },
-            { id: "2.9", domain: "2", title: "Infrastructure as Code (IaC)", desc: "خودکارسازی شبکه و مدیریت زیرساخت با کد.", link: "https://www.youtube.com/watch?v=G7_Wf5C9jXo" },
+    <div id="content"></div>
+    <div id="no-results">هیچ نتیجه‌ای برای این جستجو یافت نشد.</div>
 
-            // DOMAIN 3.0 - Network Operations
-            { id: "3.1", domain: "3", title: "DNS and DHCP", desc: "مدیریت رکوردهای نام و آدرس‌دهی خودکار.", link: "https://www.youtube.com/watch?v=rL8_Xv7p_0Q" },
-            { id: "3.2", domain: "3", title: "Network Performance", desc: "تحلیل Bandwidth, Latency و Jitter.", link: "https://www.youtube.com/watch?v=tI8_8S7_GzU" },
-            { id: "3.3", domain: "3", title: "Monitoring with SNMP", desc: "پایش تجهیزات با استفاده از پروتکل SNMP.", link: "https://www.youtube.com/watch?v=M9_L7_X5_Zk" },
-            { id: "3.4", domain: "3", title: "Syslog and Log Levels", desc: "مدیریت و تحلیل لاگ‌های سیستم.", link: "https://www.youtube.com/watch?v=Q8_K7_F5_W4" },
-            { id: "3.5", domain: "3", title: "High Availability", desc: "مفاهیم در دسترس‌پذیری بالا و Load Balancing.", link: "https://www.youtube.com/watch?v=E7_K9_P5_V8" },
+    <div id="page-footer">
+        محتوای این صفحه بر اساس دوره رایگان
+        <a href="https://www.professormesser.com/network-plus/n10-009/n10-009-video/n10-009-training-course/" target="_blank">Professor Messer N10-009</a>
+        تهیه شده است &nbsp;·&nbsp;
+        <a href="#">SARVV.SITE</a> &nbsp;·&nbsp; آخرین به‌روزرسانی: ۱۴۰۵
+    </div>
 
-            // DOMAIN 4.0 - Network Security
-            { id: "4.1", domain: "4", title: "CIA Triad", desc: "اصول امنیت: محرمانگی، یکپارچگی و دسترس‌پذیری.", link: "https://www.youtube.com/watch?v=F8_X9_L5_Q4" },
-            { id: "4.2", domain: "4", title: "Physical Security", desc: "کنترل‌های امنیتی فیزیکی در مراکز داده.", link: "https://www.youtube.com/watch?v=L9_K7_F5_M4" },
-            { id: "4.3", domain: "4", title: "Network Attacks", desc: "حملات لایه ۲ و لایه ۳ و روش‌های مقابله.", link: "https://www.youtube.com/watch?v=P8_K9_X5_H4" },
-            { id: "4.4", domain: "4", title: "Social Engineering", desc: "حملات فریب‌کارانه و مهندسی اجتماعی.", link: "https://www.youtube.com/watch?v=T8_L7_P5_K4" },
-            { id: "4.5", domain: "4", title: "Firewalls and IPS", desc: "تجهیزات امنیتی فایروال و سیستم‌های تشخیص نفوذ.", link: "https://www.youtube.com/watch?v=V9_K8_F5_D4" },
-            { id: "4.6", domain: "4", title: "VPN Technologies", desc: "تونل‌های امن و پروتکل‌های IPsec و SSL VPN.", link: "https://www.youtube.com/watch?v=Y8_K7_F5_S4" },
-            { id: "4.7", domain: "4", title: "SASE and Zero Trust", desc: "معماری‌های جدید امنیتی برای شبکه‌های مدرن.", link: "https://www.youtube.com/watch?v=Z8_K9_L5_X4" },
+</div>
 
-            // DOMAIN 5.0 - Network Troubleshooting
-            { id: "5.1", domain: "5", title: "Troubleshooting Steps", desc: "هفت مرحله استاندارد عیب‌یابی شبکه.", link: "https://www.youtube.com/watch?v=A8_K7_F5_T4" },
-            { id: "5.2", domain: "5", title: "Hardware Troubleshooting", desc: "حل مشکلات فیزیکی کابل‌ها و کانکتورها.", link: "https://www.youtube.com/watch?v=B8_L7_X5_R4" },
-            { id: "5.3", domain: "5", title: "Software Tools", desc: "ابزارهای مانیتورینگ و تحلیل پکت‌ها.", link: "https://www.youtube.com/watch?v=C8_K9_P5_W4" },
-            { id: "5.4", domain: "5", title: "Command Line Tools", desc: "عیب‌یابی با دستورات سیستم‌عامل.", link: "https://www.youtube.com/watch?v=D8_K8_F5_Q4" },
-            { id: "5.5", domain: "5", title: "Wireless Troubleshooting", desc: "رفع مشکلات سیگنال و تداخل امواج رادیویی.", link: "https://www.youtube.com/watch?v=E8_L7_X5_V4" }
-        ];
+<script>
+const BASE = "https://www.professormesser.com/network-plus/n10-009/n10-009-video/";
 
-        const domainNames = {
-            "1": "بخش ۱.۰: مفاهیم و زیرساخت شبکه (Networking Concepts)",
-            "2": "بخش ۲.۰: پیاده‌سازی و تجهیزات (Network Implementation)",
-            "3": "بخش ۳.۰: عملیات و مدیریت شبکه (Network Operations)",
-            "4": "بخش ۴.۰: امنیت شبکه (Network Security)",
-            "5": "بخش ۵.۰: عیب‌یابی و ابزارها (Network Troubleshooting)"
-        };
+const data = [
+  /* ── Section 0 ── */
+  { sec:"0", sub:"0.1", id:"0.1.1", title:"How to Pass Your N10-009 Network+ Exam", dur:"7:30",
+    desc:"معرفی دوره، ساختار آزمون N10-009 و نحوه مطالعه صحیح برای کسب گواهینامه Network+.",
+    link: BASE+"how-to-pass-your-n10-009-network-plus-exam/" },
 
-        const mainContent = document.getElementById('mainContent');
-        const searchInput = document.getElementById('searchInput');
-        const noResults = document.getElementById('noResults');
-        let currentFilter = 'all';
+  /* ── Section 1 ── */
+  { sec:"1", sub:"1.1", id:"1.1.1", title:"Understanding the OSI Model", dur:"13:51",
+    desc:"متخصصان IT از مدل OSI به عنوان روشی مشترک برای توصیف عملیات شبکه استفاده می‌کنند. هر لایه و کاربرد عملی آن بررسی می‌شود.",
+    link: BASE+"understanding-the-osi-model-n10-009/" },
 
-        function render(searchText = '') {
-            mainContent.innerHTML = '';
-            let hasAnyResult = false;
+  { sec:"1", sub:"1.2", id:"1.2.1", title:"Networking Devices", dur:"14:31",
+    desc:"شبکه‌های مدرن از دستگاه‌های مختلفی تشکیل شده‌اند. معرفی Switch، Router، Firewall، Access Point و سایر دستگاه‌ها.",
+    link: BASE+"networking-devices-n10-009/" },
+  { sec:"1", sub:"1.2", id:"1.2.2", title:"Networking Functions", dur:"13:25",
+    desc:"پروتکل‌های مختلفی برای ارائه سرویس‌های شبکه مورد نیاز است. بررسی VPN، CDN، QoS و سایر پروتکل‌ها.",
+    link: BASE+"networking-functions-n10-009/" },
 
-            Object.keys(domainNames).forEach(domainKey => {
-                if (currentFilter !== 'all' && currentFilter !== domainKey) return;
+  { sec:"1", sub:"1.3", id:"1.3.1", title:"Designing the Cloud", dur:"9:49",
+    desc:"طراحی شبکه ابری چالش‌های فنی متعددی دارد. بررسی NFV، VPC Endpoints، Network Security Groups و موارد دیگر.",
+    link: BASE+"designing-the-cloud-n10-009/" },
+  { sec:"1", sub:"1.3", id:"1.3.2", title:"Cloud Models", dur:"5:23",
+    desc:"تفاوت‌های بین SaaS، PaaS و IaaS — نه همه Cloud‌ها یکسان هستند.",
+    link: BASE+"cloud-models-n10-009/" },
 
-                const filteredVideos = videos.filter(v => 
-                    v.domain === domainKey && 
-                    (v.title.toLowerCase().includes(searchText.toLowerCase()) || 
-                     v.desc.toLowerCase().includes(searchText.toLowerCase()))
-                );
+  { sec:"1", sub:"1.4", id:"1.4.1", title:"Introduction to IP", dur:"14:10",
+    desc:"درک مبانی IP برای فهم شبکه‌های مدرن ضروری است. نحوه استفاده از IP برای انتقال داده در سراسر جهان.",
+    link: BASE+"introduction-to-ip-n10-009/" },
+  { sec:"1", sub:"1.4", id:"1.4.2", title:"Common Ports", dur:"20:22",
+    desc:"شماره پورت‌ها برای شناسایی و مدیریت ترافیک اپلیکیشن کاربرد دارند. بررسی پورت‌های معروف برای اپلیکیشن‌های پرکاربرد.",
+    link: BASE+"common-ports-n10-009/" },
+  { sec:"1", sub:"1.4", id:"1.4.3", title:"Other Useful Protocols", dur:"8:26",
+    desc:"پروتکل‌های مختلفی برای مدیریت و اتصال دستگاه‌های شبکه وجود دارد. بررسی ICMP، GRE و IPsec.",
+    link: BASE+"other-useful-protocols-n10-009/" },
+  { sec:"1", sub:"1.4", id:"1.4.4", title:"Network Communication", dur:"3:55",
+    desc:"ارتباط بین دستگاه‌های شبکه می‌تواند به روش‌های مختلف صورت گیرد. تفاوت Unicast، Multicast، Anycast و Broadcast.",
+    link: BASE+"network-communication-n10-009/" },
 
-                if (filteredVideos.length > 0) {
-                    hasAnyResult = true;
-                    const table = document.createElement('table');
-                    table.className = 'content-table';
-                    table.style.marginBottom = "20px";
+  { sec:"1", sub:"1.5", id:"1.5.1", title:"Wireless Networking", dur:"6:36",
+    desc:"استانداردهای وایرلس متعددی در صنعت IT استفاده می‌شود. بررسی شبکه‌های 802.11، 4G، 5G و ارتباطات ماهواره‌ای.",
+    link: BASE+"wireless-networking-n10-009/" },
+  { sec:"1", sub:"1.5", id:"1.5.2", title:"Ethernet Standards", dur:"4:04",
+    desc:"تمام دستگاه‌های اترنت در دنیا به لطف استانداردهای بین‌المللی می‌توانند با هم ارتباط برقرار کنند.",
+    link: BASE+"ethernet-standards-n10-009/" },
+  { sec:"1", sub:"1.5", id:"1.5.3", title:"Optical Fiber", dur:"3:55",
+    desc:"اگر در فاصله‌های زیاد شبکه‌سازی می‌کنید، احتمالاً از فیبر نوری استفاده می‌کنید. بررسی Multimode و Single-mode.",
+    link: BASE+"optical-fiber-n10-009/" },
+  { sec:"1", sub:"1.5", id:"1.5.4", title:"Copper Cabling", dur:"7:21",
+    desc:"انواع مختلف کابل مسی در شبکه‌های مدرن. بررسی کابل Twisted Pair، Coax و اهمیت کابل‌های Plenum-rated.",
+    link: BASE+"copper-cabling-n10-009/" },
+  { sec:"1", sub:"1.5", id:"1.5.5", title:"Network Transceivers", dur:"4:51",
+    desc:"ترانسیورها برای ایجاد محیط شبکه‌سازی ماژولار استفاده می‌شوند. تفاوت SFP، SFP+، QSFP و QSFP+.",
+    link: BASE+"network-transceivers-n10-009/" },
+  { sec:"1", sub:"1.5", id:"1.5.6", title:"Fiber Connectors", dur:"3:56",
+    desc:"روش‌های مختلفی برای اتصال دستگاه‌های فیبر نوری وجود دارد. بررسی کانکتورهای LC، SC، ST و MPO.",
+    link: BASE+"fiber-connectors-n10-009/" },
+  { sec:"1", sub:"1.5", id:"1.5.7", title:"Copper Connectors", dur:"3:31",
+    desc:"هر اتصال مسی یکسان نیست. بررسی کانکتورهای RJ11، RJ45، F-connector و BNC.",
+    link: BASE+"copper-connectors-n10-009/" },
 
-                    const headerRow = document.createElement('tr');
-                    headerRow.className = 'domain-row';
-                    headerRow.innerHTML = `<td colspan="2">${domainNames[domainKey]}</td>`;
-                    table.appendChild(headerRow);
+  { sec:"1", sub:"1.6", id:"1.6.1", title:"Network Topologies", dur:"4:42",
+    desc:"اغلب از توصیفات گسترده برای توپولوژی‌های شبکه استفاده می‌کنیم. بررسی Star، Mesh، Hybrid، Spine and Leaf و سایر انواع.",
+    link: BASE+"network-topologies-n10-009/" },
+  { sec:"1", sub:"1.6", id:"1.6.2", title:"Network Architectures", dur:"4:53",
+    desc:"بسیاری از شبکه‌ها بر اساس معیارهای طراحی مشخص ساخته می‌شوند. بررسی Three-tier، Collapsed Core و جریان ترافیک در دیتاسنتر.",
+    link: BASE+"network-architectures-n10-009/" },
 
-                    filteredVideos.forEach(v => {
-                        const row = document.createElement('tr');
-                        row.className = 'video-row';
-                        row.innerHTML = `
-                            <td class="video-id">${v.id}</td>
-                            <td>
-                                <a href="${v.link}" target="_blank" class="video-title">${v.title}</a>
-                                <div class="video-desc">${v.desc}</div>
-                            </td>
-                        `;
-                        table.appendChild(row);
-                    });
-                    mainContent.appendChild(table);
-                }
-            });
-            noResults.className = hasAnyResult ? 'hidden' : 'no-results';
-        }
+  { sec:"1", sub:"1.7", id:"1.7.1", title:"Binary Math", dur:"9:15",
+    desc:"برای محاسبه سابنت‌های IP، درک مبانی ریاضیات باینری مفید است. تبدیل بین آدرس‌های IP دسیمال و باینری.",
+    link: BASE+"binary-math-n10-009/" },
+  { sec:"1", sub:"1.7", id:"1.7.2", title:"IPv4 Addressing", dur:"11:06",
+    desc:"IPv4 یکی از محبوب‌ترین پروتکل‌های دنیاست. مبانی آدرس‌دهی IPv4، آدرس‌دهی خودکار و تفاوت IP عمومی و خصوصی.",
+    link: BASE+"ipv4-addressing-n10-009/" },
+  { sec:"1", sub:"1.7", id:"1.7.3", title:"Classful Subnetting", dur:"10:58",
+    desc:"IPv4 برای پشتیبانی از تقریباً هر اندازه شبکه طراحی شده است. مبانی subnetting IPv4 و نحوه استفاده از کلاس‌های شبکه.",
+    link: BASE+"classful-subnetting-n10-009/" },
+  { sec:"1", sub:"1.7", id:"1.7.4", title:"IPv4 Subnet Masks", dur:"9:00",
+    desc:"انتقال به Variable Length Subnet Masks کارایی و انعطاف در آدرس‌دهی IP را فراهم می‌کند. بررسی CIDR-block notation.",
+    link: BASE+"ipv4-subnet-masks-n10-009/" },
+  { sec:"1", sub:"1.7", id:"1.7.5", title:"Calculating IPv4 Subnets and Hosts", dur:"9:46",
+    desc:"نحوه استفاده از VLSM برای تقسیم شبکه به Subnet‌های کوچک‌تر — مهارتی ضروری برای هر مدیر شبکه.",
+    link: BASE+"calculating-ipv4-subnets-and-hosts-n10-009/" },
+  { sec:"1", sub:"1.7", id:"1.7.6", title:"Magic Number Subnetting", dur:"21:09",
+    desc:"مدیران شبکه از میانبرهای مختلفی برای محاسبه سریع اطلاعات سابنت IP استفاده می‌کنند. روش Magic Number.",
+    link: BASE+"magic-number-subnetting-n10-009/" },
+  { sec:"1", sub:"1.7", id:"1.7.7", title:"Seven Second Subnetting", dur:"17:03",
+    desc:"برخی مدیران شبکه نیاز دارند سریع و با کمترین محاسبات Subnet کنند. میانبر Seven Second Subnetting.",
+    link: BASE+"seven-second-subnetting-n10-009/" },
 
-        searchInput.addEventListener('input', (e) => render(e.target.value));
+  { sec:"1", sub:"1.8", id:"1.8.1", title:"Software Defined Networking", dur:"6:56",
+    desc:"SDN مزایای متعددی نسبت به شبکه‌سازی سنتی دارد. مبانی SDN و نحوه استفاده از SD-WAN برای بهینه‌سازی ترافیک Cloud.",
+    link: BASE+"software-defined-networking-n10-009/" },
+  { sec:"1", sub:"1.8", id:"1.8.2", title:"Virtual Extensible LAN", dur:"5:17",
+    desc:"VXLAN برای ارائه‌دهندگان خدمات و دیتاسنترهای بزرگ طراحی شده است. مقیاس‌پذیری تا میلیون‌ها شبکه مجازی.",
+    link: BASE+"virtual-extensible-lan-n10-009/" },
+  { sec:"1", sub:"1.8", id:"1.8.3", title:"Zero Trust", dur:"6:41",
+    desc:"بسیاری از شبکه‌ها در داخل نسبتاً باز هستند. بررسی Zero Trust، احراز هویت Policy-based، Least Privilege و SASE.",
+    link: BASE+"zero-trust-n10-009/" },
+  { sec:"1", sub:"1.8", id:"1.8.4", title:"Infrastructure as Code", dur:"8:20",
+    desc:"توصیف طراحی شبکه به صورت کد انعطاف‌پذیری در طراحی و استقرار زیرساخت‌های ابری را فراهم می‌کند. Playbooks و Source Control.",
+    link: BASE+"infrastructure-as-code-n10-009/" },
+  { sec:"1", sub:"1.8", id:"1.8.5", title:"IPv6 Addressing", dur:"13:50",
+    desc:"IPv6 نسل بعدی آدرس‌دهی IP است. بررسی آدرس‌های IPv6 و روش‌های اتصال شبکه‌های IPv4 و IPv6 با Tunneling، Dual-stack و NAT64.",
+    link: BASE+"ipv6-addressing-n10-009/" },
 
-        window.filterByDomain = function(domain, btn) {
-            currentFilter = domain;
-            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            render(searchInput.value);
-        };
+  /* ── Section 2 ── */
+  { sec:"2", sub:"2.1", id:"2.1.1", title:"Static Routing", dur:"7:21",
+    desc:"جداول Router می‌توانند با استفاده از Static Routes به صورت دستی پیکربندی شوند. بررسی Routing Table و تعریف Static Route.",
+    link: BASE+"static-routing-n10-009/" },
+  { sec:"2", sub:"2.1", id:"2.1.2", title:"Dynamic Routing", dur:"9:12",
+    desc:"جداول مسیریابی می‌توانند از طریق پروتکل‌های Dynamic Routing به صورت خودکار پیکربندی شوند. محبوب‌ترین پروتکل‌های Dynamic Routing.",
+    link: BASE+"dynamic-routing-n10-009/" },
+  { sec:"2", sub:"2.1", id:"2.1.3", title:"Routing Technologies", dur:"16:10",
+    desc:"اطلاعات زیادی در یک جدول مسیریابی وجود دارد. بررسی جزئیات Routing Table، FHRP و Subinterface.",
+    link: BASE+"routing-technologies-n10-009/" },
+  { sec:"2", sub:"2.1", id:"2.1.4", title:"Network Address Translation", dur:"7:02",
+    desc:"NAT برای تغییر آدرس‌های IP در لحظه واقعی استفاده می‌شود. نحوه استفاده از NAT و PAT برای به حداقل رساندن مصرف IP عمومی.",
+    link: BASE+"network-address-translation-n10-009/" },
 
-        render();
-    </script>
+  { sec:"2", sub:"2.2", id:"2.2.1", title:"VLANs and Trunking", dur:"12:29",
+    desc:"VLAN‌ها می‌توانند برای ایجاد Broadcast Domain‌های جداگانه روی یک سوئیچ استفاده شوند. بررسی 802.1Q Trunking.",
+    link: BASE+"vlans-and-trunking-n10-009/" },
+  { sec:"2", sub:"2.2", id:"2.2.2", title:"Interface Configurations", dur:"6:40",
+    desc:"هنگام اتصال به شبکه اترنت گزینه‌های پیکربندی مختلفی باید در نظر گرفته شود. Link Aggregation، MTU و Jumbo Frames.",
+    link: BASE+"interface-configurations-n10-009/" },
+  { sec:"2", sub:"2.2", id:"2.2.3", title:"Spanning Tree Protocol", dur:"6:06",
+    desc:"یکی از چالش‌های سوئیچینگ نگرانی از Loop‌های شبکه است. نحوه استفاده از STP برای جلوگیری از Loop و بازیابی شبکه.",
+    link: BASE+"spanning-tree-protocol-n10-009/" },
+
+  { sec:"2", sub:"2.3", id:"2.3.1", title:"Wireless Technologies", dur:"8:34",
+    desc:"شبکه‌های بی‌سیم شامل تکنولوژی‌های مختلفی هستند. فرکانس‌ها و کانال‌های وایرلس، Band Steering و تأثیرات مقررات.",
+    link: BASE+"wireless-technologies-n10-009/" },
+  { sec:"2", sub:"2.3", id:"2.3.2", title:"Wireless Networking", dur:"11:54",
+    desc:"طراحی شبکه وایرلس شامل SSID، BSSID، ESSID، Captive Portal، انواع آنتن و موارد دیگر می‌شود.",
+    link: BASE+"wireless-networking-n10-009-2/" },
+  { sec:"2", sub:"2.3", id:"2.3.3", title:"Network Types", dur:"4:41",
+    desc:"روش‌های مختلفی برای اتصال دستگاه‌ها در شبکه وایرلس وجود دارد. بررسی Mesh، Ad Hoc، Point-to-Point و Infrastructure Mode.",
+    link: BASE+"network-types-n10-009/" },
+  { sec:"2", sub:"2.3", id:"2.3.4", title:"Wireless Encryption", dur:"3:23",
+    desc:"شبکه‌های وایرلس برای حفظ محرمانگی به پروتکل‌های امن نیاز دارند. بررسی روش‌های رمزنگاری WPA2 و WPA3.",
+    link: BASE+"wireless-encryption-n10-009/" },
+
+  { sec:"2", sub:"2.4", id:"2.4.1", title:"Installing Networks", dur:"11:40",
+    desc:"بسیاری از تکنولوژی‌های شبکه در دیتاسنتر قرار دارند. بررسی MDF، IDF، Hot/Cold Aisle، زیرساخت کابل‌کشی و موارد دیگر.",
+    link: BASE+"installing-networks-n10-009/" },
+  { sec:"2", sub:"2.4", id:"2.4.2", title:"Power", dur:"7:19",
+    desc:"منبع برق قابل اعتماد بخش مهمی از هر زیرساخت تکنولوژی است. مبانی برق و محافظت در برابر قطع برق با UPS و PDU.",
+    link: BASE+"power-n10-009/" },
+  { sec:"2", sub:"2.4", id:"2.4.3", title:"Environmental Factors", dur:"3:29",
+    desc:"ستون فقرات دیتاسنتر محیطی است که تمام تکنولوژی در آن قرار دارد. رطوبت، دما و سیستم‌های اطفا حریق.",
+    link: BASE+"environmental-factors-n10-009/" },
+
+  /* ── Section 3 ── */
+  { sec:"3", sub:"3.1", id:"3.1.1", title:"Network Documentation", dur:"10:42",
+    desc:"مستندسازی کافی هرگز وجود ندارد. بررسی Network Map، Asset Management، Site Survey و موارد دیگر.",
+    link: BASE+"network-documentation-n10-009/" },
+  { sec:"3", sub:"3.1", id:"3.1.2", title:"Life Cycle Management", dur:"8:17",
+    desc:"هر قطعه شبکه عمر محدودی دارد. بررسی Bug Fix، Change Control، Decommissioning و موارد دیگر.",
+    link: BASE+"life-cycle-management-n10-009/" },
+  { sec:"3", sub:"3.1", id:"3.1.3", title:"Configuration Management", dur:"5:19",
+    desc:"پیکربندی یک دستگاه مهم‌ترین بخش سیستم است. بررسی Production Config، Backup Config و Baseline Config.",
+    link: BASE+"configuration-management-n10-009/" },
+
+  { sec:"3", sub:"3.2", id:"3.2.1", title:"SNMP", dur:"8:58",
+    desc:"پروتکل SNMP به طور گسترده برای مانیتورینگ و پیکربندی استفاده می‌شود. نسخه‌های SNMP، SNMP Trap و فرایند Authentication.",
+    link: BASE+"snmp-n10-009/" },
+  { sec:"3", sub:"3.2", id:"3.2.2", title:"Logs and Monitoring", dur:"13:06",
+    desc:"شبکه هیچ‌وقت نمی‌خوابد. نحوه مانیتورینگ شبکه با Flow Data، Protocol Analysis، Syslog، SIEM و موارد دیگر.",
+    link: BASE+"logs-and-monitoring-n10-009/" },
+  { sec:"3", sub:"3.2", id:"3.2.3", title:"Network Solutions", dur:"6:57",
+    desc:"روش‌های مختلفی برای مدیریت شبکه وجود دارد. بررسی Network Discovery، Traffic Analysis، Availability Monitoring و موارد دیگر.",
+    link: BASE+"network-solutions-n10-009/" },
+
+  { sec:"3", sub:"3.3", id:"3.3.1", title:"Disaster Recovery", dur:"12:09",
+    desc:"برنامه‌ریزی برای هر اتفاق غیرمنتظره‌ای ضروری است. نحوه اندازه‌گیری Outage، گزینه‌های Site Resiliency و آماده‌سازی برای سناریوی فاجعه.",
+    link: BASE+"disaster-recovery-n10-009/" },
+  { sec:"3", sub:"3.3", id:"3.3.2", title:"Network Redundancy", dur:"4:06",
+    desc:"حفظ پیوسته کار سیستم‌ها بخش مهمی از هر طراحی شبکه است. بررسی پیکربندی‌های Active-Active و Active-Passive.",
+    link: BASE+"network-redundancy-n10-009/" },
+
+  { sec:"3", sub:"3.4", id:"3.4.1", title:"DHCP", dur:"8:51",
+    desc:"ما به DHCP برای تخصیص خودکار آدرس به دستگاه‌های شبکه متکی هستیم. فرایند DHCP و نحوه استفاده از DHCP Relay.",
+    link: BASE+"dhcp-n10-009/" },
+  { sec:"3", sub:"3.4", id:"3.4.2", title:"Configuring DHCP", dur:"10:18",
+    desc:"پیکربندی DHCP Server به تنظیمات مختلفی نیاز دارد. DHCP Pool، Address Reservation، DHCP Options و فرایند Lease.",
+    link: BASE+"configuring-dhcp-n10-009/" },
+  { sec:"3", sub:"3.4", id:"3.4.3", title:"IPv6 and SLAAC", dur:"4:53",
+    desc:"آدرس‌دهی خودکار بخشی از استاندارد IPv6 است. بررسی SLAAC، Network Discovery Protocol (NDP) و آدرس‌دهی خودکار دستگاه‌های IPv6.",
+    link: BASE+"ipv6-and-slaac-n10-009/" },
+  { sec:"3", sub:"3.4", id:"3.4.4", title:"An Overview of DNS", dur:"16:54",
+    desc:"DNS بخش حیاتی هر شبکه است. بررسی DNS، Name Resolution محلی، Forward/Reverse Lookup، Recursive Query و امنیت DNS.",
+    link: BASE+"an-overview-of-dns-n10-009/" },
+  { sec:"3", sub:"3.4", id:"3.4.5", title:"DNS Records", dur:"9:04",
+    desc:"پیکربندی DNS به انواع مختلف Record نیاز دارد. بررسی DNS Record برای آدرس‌ها، Canonical Name، سرویس ایمیل و موارد دیگر.",
+    link: BASE+"dns-records-n10-009/" },
+  { sec:"3", sub:"3.4", id:"3.4.6", title:"Time Protocols", dur:"5:02",
+    desc:"زمان یک معیار مهم برای اکثر شبکه‌هاست. بررسی NTP، Network Time Security (NTS) و Precision Time Protocol (PTP).",
+    link: BASE+"time-protocols-n10-009/" },
+
+  { sec:"3", sub:"3.5", id:"3.5.1", title:"VPNs", dur:"6:54",
+    desc:"شبکه‌های خصوصی مجازی به ما امکان ارتباط امن از طریق شبکه‌های عمومی را می‌دهند. Client-to-Site، Clientless VPN و Split Tunnel.",
+    link: BASE+"vpns-n10-009/" },
+  { sec:"3", sub:"3.5", id:"3.5.2", title:"Remote Access", dur:"7:52",
+    desc:"بسیاری از مدیران شبکه سوئیچ‌ها و روترها را از راه دور پیکربندی می‌کنند. SSH، API Integration، Console، Jump Box و Out-of-band Management.",
+    link: BASE+"remote-access-n10-009/" },
+
+  /* ── Section 4 ── */
+  { sec:"4", sub:"4.1", id:"4.1.1", title:"Security Concepts", dur:"13:06",
+    desc:"امنیت اطلاعات حوزه‌ای گسترده با مفاهیم متعدد است. بررسی حالت‌های داده، گواهی دیجیتال، CA، IAM و موارد دیگر.",
+    link: BASE+"security-concepts-n10-009/" },
+  { sec:"4", sub:"4.1", id:"4.1.2", title:"Authentication", dur:"12:46",
+    desc:"فرایند احراز هویت بخش مهمی از هر زیرساخت است. بررسی Single Sign-On، RADIUS، LDAP، SAML و سایر تکنولوژی‌های احراز هویت.",
+    link: BASE+"authentication-n10-009/" },
+  { sec:"4", sub:"4.1", id:"4.1.3", title:"Security Technologies", dur:"7:15",
+    desc:"روش‌های متعددی برای کمک به ایمن کردن سازمان وجود دارد. بررسی Honeypot، Honeynet، Risk، Vulnerability، Exploit، Threat و CIA Triad.",
+    link: BASE+"security-technologies-n10-009/" },
+  { sec:"4", sub:"4.1", id:"4.1.4", title:"Regulatory Compliance", dur:"4:00",
+    desc:"تقریباً هر سازمانی باید Compliance را مدیریت کند. بررسی Data Localization، GDPR و PCI DSS.",
+    link: BASE+"regulatory-compliance-n10-009/" },
+  { sec:"4", sub:"4.1", id:"4.1.5", title:"Segmentation Enforcement", dur:"6:09",
+    desc:"Segmentation روشی مهم برای مدیریت امنیت است. بررسی IoT Segmentation، SCADA، Operational Technology، Guest Network و BYOD.",
+    link: BASE+"segmentation-enforcement-n10-009/" },
+
+  { sec:"4", sub:"4.2", id:"4.2.1", title:"Denial of Service", dur:"6:58",
+    desc:"برخی مهاجمان می‌خواهند سرورها و شبکه‌های شما از کار بیفتند. بررسی DoS و نحوه استفاده از DoS Amplification.",
+    link: BASE+"denial-of-service-n10-009/" },
+  { sec:"4", sub:"4.2", id:"4.2.2", title:"VLAN Hopping", dur:"6:35",
+    desc:"در اکثر موارد بدون Router نمی‌توان از یک VLAN به VLAN دیگر رفت. نحوه استفاده مهاجمان از Switch Spoofing و Double Tagging.",
+    link: BASE+"vlan-hopping-n10-009/" },
+  { sec:"4", sub:"4.2", id:"4.2.3", title:"MAC Flooding", dur:"8:10",
+    desc:"یک مهاجم گاهی می‌تواند سوئیچ را متقاعد کند که اطلاعات را به جاهایی که نباید بفرستد. نحوه استفاده از MAC Flooding.",
+    link: BASE+"mac-flooding-n10-009/" },
+  { sec:"4", sub:"4.2", id:"4.2.4", title:"ARP and DNS Poisoning", dur:"7:28",
+    desc:"دسترسی به جریان ترافیک برای هر مهاجمی چالش‌برانگیز است. نحوه استفاده از ARP Poisoning و DNS Poisoning برای حملات On-path.",
+    link: BASE+"arp-and-dns-poisoning-n10-009/" },
+  { sec:"4", sub:"4.2", id:"4.2.5", title:"Rogue Services", dur:"6:08",
+    desc:"گاهی یک Access Point یک AP مشروع نیست. بررسی Rogue DHCP Server، Rogue Access Point، Wireless Evil Twin و On-path Attack.",
+    link: BASE+"rogue-services-n10-009/" },
+  { sec:"4", sub:"4.2", id:"4.2.6", title:"Social Engineering", dur:"10:56",
+    desc:"مهاجمان اغلب از تکنیک‌های Social Engineering برای دور زدن کنترل‌های امنیتی استفاده می‌کنند. Phishing، Shoulder Surfing، Tailgating و Dumpster Diving.",
+    link: BASE+"social-engineering-n10-009/" },
+  { sec:"4", sub:"4.2", id:"4.2.7", title:"Malware", dur:"6:41",
+    desc:"نرم‌افزارهای مخرب می‌توانند آسیب قابل توجهی به هر سیستم یا شبکه‌ای وارد کنند. انواع Malware و نحوه استفاده مهاجمان از Ransomware.",
+    link: BASE+"malware-n10-009/" },
+
+  { sec:"4", sub:"4.3", id:"4.3.1", title:"Device Security", dur:"9:03",
+    desc:"روش‌های بهینه زیادی برای ایمن نگه داشتن دستگاه‌ها وجود دارد. غیرفعال کردن Port، تغییر اعتبارنامه پیش‌فرض، MAC Filtering و موارد دیگر.",
+    link: BASE+"device-security-n10-009/" },
+  { sec:"4", sub:"4.3", id:"4.3.2", title:"Security Rules", dur:"10:23",
+    desc:"اغلب از قوانین برای اجازه یا جلوگیری از دسترسی به منابع مهم استفاده می‌کنیم. ACL، Firewall Rule، Content Filtering، Screened Subnet و Security Zone.",
+    link: BASE+"security-rules-n10-009/" },
+
+  /* ── Section 5 ── */
+  { sec:"5", sub:"5.1", id:"5.1.1", title:"Network Troubleshooting Methodology", dur:"8:04",
+    desc:"متخصصان شبکه هر روز مشکلات را حل می‌کنند. نحوه ساده‌سازی مشکلات پیچیده با یک متدولوژی عیب‌یابی مشخص.",
+    link: BASE+"network-troubleshooting-methodology-n10-009/" },
+
+  { sec:"5", sub:"5.2", id:"5.2.1", title:"Cable Issues", dur:"14:40",
+    desc:"اگر لایه فیزیکی درست نباشد، شبکه مشکلات بزرگی خواهد داشت. بررسی Fiber Mismatch، Cable Category، Crosstalk، EMI، Attenuation و Termination صحیح.",
+    link: BASE+"cable-issues-n10-009/" },
+  { sec:"5", sub:"5.2", id:"5.2.2", title:"Interface Issues", dur:"9:29",
+    desc:"یک Interface شبکه می‌تواند اطلاعات زیادی درباره سلامت شبکه بدهد. بررسی CRC Error، Runt، Giant، Drop، Error Disabled State و Port Status.",
+    link: BASE+"interface-issues-n10-009/" },
+  { sec:"5", sub:"5.2", id:"5.2.3", title:"Hardware Issues", dur:"7:34",
+    desc:"یک مشکل سخت‌افزاری تنها می‌تواند مشکلات جدی در شبکه تولیدی ایجاد کند. بررسی PoE Standards، Transceiver Mismatch و محاسبه Signal Strength.",
+    link: BASE+"hardware-issues-n10-009/" },
+
+  { sec:"5", sub:"5.3", id:"5.3.1", title:"Switching Issues", dur:"9:58",
+    desc:"یک سوئیچ با پیکربندی نادرست می‌تواند خطای حیاتی باشد. توقف Switching Loop با STP، مدیریت VLAN Assignment و بهترین روش‌های ACL.",
+    link: BASE+"switching-issues-n10-009/" },
+  { sec:"5", sub:"5.3", id:"5.3.2", title:"Routing and IP Issues", dur:"9:37",
+    desc:"پیکربندی نادرست Router می‌تواند مشکلات متعدد شبکه ایجاد کند. بررسی Routing Table، Gateway of Last Resort، Address Pool Exhaustion و Duplicate IP.",
+    link: BASE+"routing-and-ip-issues-n10-009/" },
+
+  { sec:"5", sub:"5.4", id:"5.4.1", title:"Performance Issues", dur:"7:18",
+    desc:"پهنای باند هیچ‌وقت کافی نیست. نحوه عیب‌یابی Congestion، Bottleneck، Latency، Packet Loss و Jitter.",
+    link: BASE+"performance-issues-n10-009/" },
+  { sec:"5", sub:"5.4", id:"5.4.2", title:"Wireless Issues", dur:"9:21",
+    desc:"عیب‌یابی چیزی که نمی‌توانید ببینید دشوار است. رفع Wireless Interference، مدیریت Channel، رفع Roaming Misconfiguration و موارد دیگر.",
+    link: BASE+"wireless-issues-n10-009/" },
+
+  { sec:"5", sub:"5.5", id:"5.5.1", title:"Software Tools", dur:"7:29",
+    desc:"اکثر مدیران شبکه ابزارهای متعددی در اختیار دارند. بررسی Protocol Analyzer، Port Scanner، Device Discovery و Speed Test.",
+    link: BASE+"software-tools-n10-009/" },
+  { sec:"5", sub:"5.5", id:"5.5.2", title:"Command Line Tools", dur:"17:59",
+    desc:"تمام ابزارهای عیب‌یابی دقیق در Command Line هستند. بررسی ping، traceroute، nslookup، dig، tcpdump، netstat و موارد دیگر.",
+    link: BASE+"command-line-tools-n10-009/" },
+  { sec:"5", sub:"5.5", id:"5.5.3", title:"Hardware Tools", dur:"8:40",
+    desc:"یک جعبه ابزار خوب شامل ابزارهای سخت‌افزاری متعددی است. بررسی Tone Generator، Cable Tester، Tap، Port Mirror، Wi-Fi Analyzer و موارد دیگر.",
+    link: BASE+"hardware-tools-n10-009/" },
+  { sec:"5", sub:"5.5", id:"5.5.4", title:"Basic Network Device Commands", dur:"8:56",
+    desc:"برخی دستورات در چندین دستگاه مشابه هستند. بررسی show route، show interface، show config و سایر دستورات رایج.",
+    link: BASE+"basic-network-device-commands-n10-009/" }
+];
+
+const sectionMeta = {
+  "0": { heading:"Section 0 — The N10-009 CompTIA Network+ Exam", anchor:"sec-0" },
+  "1": { heading:"Section 1 — Networking Concepts (مفاهیم شبکه)", anchor:"sec-1" },
+  "2": { heading:"Section 2 — Network Implementation (پیاده‌سازی شبکه)", anchor:"sec-2" },
+  "3": { heading:"Section 3 — Network Operations (عملیات شبکه)", anchor:"sec-3" },
+  "4": { heading:"Section 4 — Network Security (امنیت شبکه)", anchor:"sec-4" },
+  "5": { heading:"Section 5 — Network Troubleshooting (عیب‌یابی شبکه)", anchor:"sec-5" }
+};
+
+const subMeta = {
+  "0.1":"0.1 — Introduction",
+  "1.1":"1.1 — The OSI Model",
+  "1.2":"1.2 — Network Appliances and Applications",
+  "1.3":"1.3 — The Cloud",
+  "1.4":"1.4 — Ports and Protocols",
+  "1.5":"1.5 — Transmission Media",
+  "1.6":"1.6 — Network Topologies",
+  "1.7":"1.7 — IPv4 Addressing",
+  "1.8":"1.8 — Network Environments",
+  "2.1":"2.1 — Routing Technologies",
+  "2.2":"2.2 — Switching Technologies",
+  "2.3":"2.3 — Wireless Devices",
+  "2.4":"2.4 — Physical Installations",
+  "3.1":"3.1 — Processes and Procedures",
+  "3.2":"3.2 — Network Monitoring",
+  "3.3":"3.3 — Disaster Recovery",
+  "3.4":"3.4 — IP Services",
+  "3.5":"3.5 — Network Access",
+  "4.1":"4.1 — Network Security Concepts",
+  "4.2":"4.2 — Attack Types",
+  "4.3":"4.3 — Network Security Features",
+  "5.1":"5.1 — Troubleshooting",
+  "5.2":"5.2 — Physical Issues",
+  "5.3":"5.3 — Troubleshooting Network Services",
+  "5.4":"5.4 — Performance Issues",
+  "5.5":"5.5 — Tools and Protocols"
+};
+
+let activeFilter = 'all';
+const contentEl  = document.getElementById('content');
+const noResults  = document.getElementById('no-results');
+const resultInfo = document.getElementById('result-info');
+
+function render() {
+  const q = document.getElementById('searchInput').value.trim().toLowerCase();
+  contentEl.innerHTML = '';
+  let total = 0;
+
+  Object.entries(sectionMeta).forEach(([secKey, secInfo]) => {
+    if (activeFilter !== 'all' && activeFilter !== secKey) return;
+
+    /* collect matching items, grouped by sub */
+    const secItems = data.filter(v =>
+      v.sec === secKey &&
+      (v.title.toLowerCase().includes(q) ||
+       v.id.includes(q) ||
+       v.desc.toLowerCase().includes(q) ||
+       v.sub.includes(q))
+    );
+    if (!secItems.length) return;
+    total += secItems.length;
+
+    /* group by sub */
+    const subs = {};
+    secItems.forEach(v => {
+      if (!subs[v.sub]) subs[v.sub] = [];
+      subs[v.sub].push(v);
+    });
+
+    const secDiv = document.createElement('div');
+    let html = `<h2 class="section-heading" id="${secInfo.anchor}">${secInfo.heading}</h2>`;
+
+    Object.entries(subs).forEach(([sub, items]) => {
+      html += `<div class="subsection-heading">${subMeta[sub] || sub}</div>`;
+      html += `<table class="data-table">
+        <thead><tr>
+          <th style="width:62px;">ID</th>
+          <th style="width:52px;">مدت</th>
+          <th>عنوان و توضیح</th>
+        </tr></thead><tbody>`;
+      items.forEach(v => {
+        html += `<tr>
+          <td class="td-id">${v.id}</td>
+          <td class="td-dur">${v.dur}</td>
+          <td>
+            <div class="td-topic"><a href="${v.link}" target="_blank">${v.title}</a></div>
+            <div class="td-desc">${v.desc}</div>
+          </td>
+        </tr>`;
+      });
+      html += `</tbody></table>`;
+    });
+
+    secDiv.innerHTML = html;
+    contentEl.appendChild(secDiv);
+  });
+
+  noResults.classList.toggle('show', total === 0);
+  resultInfo.textContent = total === 0
+    ? 'نتیجه‌ای یافت نشد.'
+    : `در حال نمایش ${total} ویدیو از ۸۷ ویدیو.`;
+}
+
+function setFilter(val, el) {
+  activeFilter = val;
+  document.querySelectorAll('#filter-row a').forEach(a => a.classList.remove('active-filter'));
+  el.classList.add('active-filter');
+  render();
+}
+
+document.getElementById('searchInput').addEventListener('input', render);
+render();
+</script>
 </body>
 </html>
