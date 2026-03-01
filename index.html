@@ -59,6 +59,31 @@
         #toc ol li { margin: 3px 0; }
         #toc a { text-decoration: none; color: #0645ad; }
         #toc a:hover { text-decoration: underline; }
+        /* domain sub-link inside TOC */
+        #toc .toc-domain-link {
+            display: inline-block;
+            font-size: 10px;
+            margin-right: 6px;
+            padding: 0 4px;
+            border: 1px solid #5a9a5a;
+            background: #e8f5e9;
+            color: #2e6b2e !important;
+            text-decoration: none !important;
+            vertical-align: middle;
+            white-space: nowrap;
+        }
+        #toc .toc-domain-link:hover { background: #c8e6c9; }
+        #toc .toc-domain-soon {
+            display: inline-block;
+            font-size: 10px;
+            margin-right: 6px;
+            padding: 0 4px;
+            border: 1px solid #d0d0d0;
+            background: #f8f9fa;
+            color: #a2a9b1;
+            vertical-align: middle;
+            white-space: nowrap;
+        }
 
         /* ── Progress box ── */
         #progress-box {
@@ -89,6 +114,38 @@
             cursor: pointer; color: #54595d; font-family: "Tahoma", sans-serif;
         }
         #reset-btn:hover { background: #eaf3fb; color: #202020; }
+
+        /* ── Domain pages quick-nav box ── */
+        #domain-box {
+            background: #f8f9fa; border: 1px solid #a2a9b1;
+            padding: 10px 14px; font-size: 12px; min-width: 240px;
+        }
+        #domain-box .db-title { font-weight: bold; font-size: 13px; margin-bottom: 8px; }
+        .domain-list { list-style: none; padding: 0; }
+        .domain-list li {
+            padding: 4px 0;
+            border-bottom: 1px solid #e8e8e8;
+            display: flex; align-items: center; justify-content: space-between;
+            gap: 8px;
+        }
+        .domain-list li:last-child { border-bottom: none; }
+        .domain-list .dl-name { color: #202020; flex: 1; }
+        .domain-list .dl-link {
+            font-size: 11px; padding: 1px 7px;
+            border: 1px solid #5a9a5a; background: #e8f5e9;
+            color: #2e6b2e; text-decoration: none;
+            white-space: nowrap; font-family: "Tahoma", sans-serif;
+        }
+        .domain-list .dl-link:hover { background: #c8e6c9; }
+        .domain-list .dl-soon {
+            font-size: 11px; padding: 1px 7px;
+            border: 1px solid #d0d0d0; background: #f8f9fa;
+            color: #a2a9b1; white-space: nowrap; font-family: "Tahoma", sans-serif;
+        }
+        .domain-list .dl-pct {
+            font-family: "Courier New", monospace; font-size: 11px;
+            color: #54595d; min-width: 30px; text-align: left;
+        }
 
         /* ── Recommended Order box ── */
         #roadmap-box {
@@ -139,7 +196,27 @@
             font-family: "Times New Roman", serif; font-size: 19px; font-weight: normal;
             border-bottom: 1px solid #a2a9b1; padding-bottom: 4px;
             margin-top: 24px; margin-bottom: 2px; color: #202020;
+            display: flex; align-items: baseline; justify-content: space-between; gap: 10px;
         }
+        .section-heading-text { flex: 1; }
+        /* domain page button in section heading */
+        .sec-domain-btn {
+            font-size: 11px; font-family: "Tahoma", sans-serif; font-weight: normal;
+            padding: 2px 9px;
+            border: 1px solid #5a9a5a; background: #e8f5e9;
+            color: #2e6b2e; text-decoration: none;
+            white-space: nowrap; flex-shrink: 0;
+        }
+        .sec-domain-btn:hover { background: #c8e6c9; color: #2e6b2e; text-decoration: none; }
+        .sec-domain-btn:visited { color: #2e6b2e; }
+        .sec-domain-soon {
+            font-size: 11px; font-family: "Tahoma", sans-serif; font-weight: normal;
+            padding: 2px 9px;
+            border: 1px solid #d0d0d0; background: #f8f9fa;
+            color: #a2a9b1;
+            white-space: nowrap; flex-shrink: 0;
+        }
+
         .subsection-heading {
             font-size: 13px; font-weight: bold; color: #202020;
             background: #eaecf0; border-right: 3px solid #54595d;
@@ -190,7 +267,16 @@
             color: #54595d; width: 46px; text-align: center; white-space: nowrap;
         }
         .td-topic a { font-size: 13px; font-weight: bold; display: block; margin-bottom: 2px; }
+        .td-topic .td-topic-plain { font-size: 13px; font-weight: bold; display: block; margin-bottom: 2px; color: #202020; }
         .td-desc { font-size: 12px; color: #54595d; line-height: 1.55; }
+
+        /* ── page badge on video rows ── */
+        .page-badge {
+            display: inline-block; font-size: 10px; padding: 0 4px;
+            border: 1px solid; vertical-align: middle; margin-left: 5px;
+            font-family: "Tahoma", sans-serif; white-space: nowrap;
+        }
+        .badge-ready { background: #e8f5e9; border-color: #5a9a5a; color: #2e6b2e; }
 
         /* ── Status cell ── */
         .td-status { width: 100px; text-align: center; vertical-align: middle; }
@@ -238,6 +324,7 @@
     <div id="notice-bar">
         این فهرست شامل تمام <strong>۸۷ ویدیو</strong> از دوره رایگان Professor Messer است.
         روی ستون <strong>وضعیت</strong> کلیک کنید تا پیشرفت خود را ثبت کنید — ذخیره‌سازی خودکار در مرورگر شما.
+        بخش‌هایی که صفحه اختصاصی دارند با <span style="font-size:10px;padding:0 4px;border:1px solid #5a9a5a;background:#e8f5e9;color:#2e6b2e;">● صفحه بخش</span> مشخص شده‌اند.
     </div>
 
     <div class="top-widgets">
@@ -247,11 +334,26 @@
             <div id="toc-title">فهرست مطالب</div>
             <ol>
                 <li><a href="#sec-0">Section 0 — Introduction</a></li>
-                <li><a href="#sec-1">Section 1 — Networking Concepts</a></li>
-                <li><a href="#sec-2">Section 2 — Network Implementation</a></li>
-                <li><a href="#sec-3">Section 3 — Network Operations</a></li>
-                <li><a href="#sec-4">Section 4 — Network Security</a></li>
-                <li><a href="#sec-5">Section 5 — Network Troubleshooting</a></li>
+                <li>
+                    <a href="#sec-1">Section 1 — Networking Concepts</a>
+                    <a href="domain1/index.html" class="toc-domain-link">← صفحه بخش</a>
+                </li>
+                <li>
+                    <a href="#sec-2">Section 2 — Network Implementation</a>
+                    <span class="toc-domain-soon">به زودی</span>
+                </li>
+                <li>
+                    <a href="#sec-3">Section 3 — Network Operations</a>
+                    <span class="toc-domain-soon">به زودی</span>
+                </li>
+                <li>
+                    <a href="#sec-4">Section 4 — Network Security</a>
+                    <span class="toc-domain-soon">به زودی</span>
+                </li>
+                <li>
+                    <a href="#sec-5">Section 5 — Network Troubleshooting</a>
+                    <span class="toc-domain-soon">به زودی</span>
+                </li>
             </ol>
         </div>
 
@@ -269,6 +371,38 @@
                 <span class="leg-none"></span> نخوانده
             </div>
             <button id="reset-btn" onclick="resetAll()">پاک کردن همه وضعیت‌ها</button>
+        </div>
+
+        <!-- Domain pages quick-nav -->
+        <div id="domain-box">
+            <div class="db-title">📂 صفحات بخش‌ها</div>
+            <ul class="domain-list">
+                <li>
+                    <span class="dl-name">Section 1 — Networking Concepts</span>
+                    <span class="dl-pct" id="dpct-1">0%</span>
+                    <a href="domain1/index.html" class="dl-link">مشاهده ←</a>
+                </li>
+                <li>
+                    <span class="dl-name">Section 2 — Implementation</span>
+                    <span class="dl-pct" id="dpct-2">0%</span>
+                    <span class="dl-soon">به زودی</span>
+                </li>
+                <li>
+                    <span class="dl-name">Section 3 — Operations</span>
+                    <span class="dl-pct" id="dpct-3">0%</span>
+                    <span class="dl-soon">به زودی</span>
+                </li>
+                <li>
+                    <span class="dl-name">Section 4 — Security</span>
+                    <span class="dl-pct" id="dpct-4">0%</span>
+                    <span class="dl-soon">به زودی</span>
+                </li>
+                <li>
+                    <span class="dl-name">Section 5 — Troubleshooting</span>
+                    <span class="dl-pct" id="dpct-5">0%</span>
+                    <span class="dl-soon">به زودی</span>
+                </li>
+            </ul>
         </div>
 
         <!-- Roadmap -->
@@ -348,10 +482,27 @@
 const BASE = "https://www.professormesser.com/network-plus/n10-009/n10-009-video/";
 const STORE_KEY = "sarvv_n10009_";
 
-// ── Learning order: phase 1-8, and order number 1-87 ──
-// order: recommended watch order; phase: learning phase
+// ── Per-video page links: id -> relative URL (only fill in when a page exists) ──
+const VIDEO_PAGE = {
+    "1.1.1": "domain1/osi-model.html"
+    // Add more here as you create pages:
+    // "1.2.1": "domain1/networking-devices.html",
+    // "1.4.2": "domain1/common-ports.html",
+    // etc.
+};
+
+// ── Domain section pages ──
+const DOMAIN_PAGES = {
+    "1": { url: "domain1/index.html", ready: true  },
+    "2": { url: "domain2/index.html", ready: false },
+    "3": { url: "domain3/index.html", ready: false },
+    "4": { url: "domain4/index.html", ready: false },
+    "5": { url: "domain5/index.html", ready: false }
+};
+
+// ── Learning order ──
 const videos = [
-// ── PHASE 1: مبانی و پایه ──
+// ── PHASE 1 ──
 { sec:"0",sub:"0.1",id:"0.1.1",order:1, phase:1,title:"How to Pass Your N10-009 Network+ Exam",dur:"7:30",desc:"معرفی دوره، ساختار آزمون N10-009 و نحوه مطالعه صحیح برای کسب گواهینامه Network+.",link:BASE+"how-to-pass-your-n10-009-network-plus-exam/"},
 { sec:"1",sub:"1.1",id:"1.1.1",order:2, phase:1,title:"Understanding the OSI Model",dur:"13:51",desc:"متخصصان IT از مدل OSI به عنوان روشی مشترک برای توصیف عملیات شبکه استفاده می‌کنند. هر لایه و کاربرد عملی آن بررسی می‌شود.",link:BASE+"understanding-the-osi-model-n10-009/"},
 { sec:"1",sub:"1.2",id:"1.2.1",order:3, phase:1,title:"Networking Devices",dur:"14:31",desc:"شبکه‌های مدرن از دستگاه‌های مختلفی تشکیل شده‌اند. معرفی Switch، Router، Firewall، Access Point و سایر دستگاه‌ها.",link:BASE+"networking-devices-n10-009/"},
@@ -366,7 +517,7 @@ const videos = [
 { sec:"1",sub:"1.7",id:"1.7.6",order:12,phase:1,title:"Magic Number Subnetting",dur:"21:09",desc:"مدیران شبکه از میانبرهای مختلفی برای محاسبه سریع اطلاعات سابنت IP استفاده می‌کنند. روش Magic Number.",link:BASE+"magic-number-subnetting-n10-009/"},
 { sec:"1",sub:"1.7",id:"1.7.7",order:13,phase:1,title:"Seven Second Subnetting",dur:"17:03",desc:"برخی مدیران شبکه نیاز دارند سریع و با کمترین محاسبات Subnet کنند. میانبر Seven Second Subnetting.",link:BASE+"seven-second-subnetting-n10-009/"},
 
-// ── PHASE 2: رسانه و کابل‌کشی ──
+// ── PHASE 2 ──
 { sec:"1",sub:"1.5",id:"1.5.4",order:14,phase:2,title:"Copper Cabling",dur:"7:21",desc:"انواع مختلف کابل مسی در شبکه‌های مدرن. بررسی کابل Twisted Pair، Coax و اهمیت کابل‌های Plenum-rated.",link:BASE+"copper-cabling-n10-009/"},
 { sec:"1",sub:"1.5",id:"1.5.3",order:15,phase:2,title:"Optical Fiber",dur:"3:55",desc:"اگر در فاصله‌های زیاد شبکه‌سازی می‌کنید، احتمالاً از فیبر نوری استفاده می‌کنید. بررسی Multimode و Single-mode.",link:BASE+"optical-fiber-n10-009/"},
 { sec:"1",sub:"1.5",id:"1.5.7",order:16,phase:2,title:"Copper Connectors",dur:"3:31",desc:"هر اتصال مسی یکسان نیست. بررسی کانکتورهای RJ11، RJ45، F-connector و BNC.",link:BASE+"copper-connectors-n10-009/"},
@@ -376,7 +527,7 @@ const videos = [
 { sec:"1",sub:"1.4",id:"1.4.2",order:20,phase:2,title:"Common Ports",dur:"20:22",desc:"شماره پورت‌ها برای شناسایی و مدیریت ترافیک اپلیکیشن کاربرد دارند. بررسی پورت‌های معروف برای اپلیکیشن‌های پرکاربرد.",link:BASE+"common-ports-n10-009/"},
 { sec:"1",sub:"1.4",id:"1.4.3",order:21,phase:2,title:"Other Useful Protocols",dur:"8:26",desc:"پروتکل‌های مختلفی برای مدیریت و اتصال دستگاه‌های شبکه وجود دارد. بررسی ICMP، GRE و IPsec.",link:BASE+"other-useful-protocols-n10-009/"},
 
-// ── PHASE 3: مسیریابی و سوئیچینگ ──
+// ── PHASE 3 ──
 { sec:"1",sub:"1.6",id:"1.6.1",order:22,phase:3,title:"Network Topologies",dur:"4:42",desc:"اغلب از توصیفات گسترده برای توپولوژی‌های شبکه استفاده می‌کنیم. بررسی Star، Mesh، Hybrid، Spine and Leaf و سایر انواع.",link:BASE+"network-topologies-n10-009/"},
 { sec:"1",sub:"1.6",id:"1.6.2",order:23,phase:3,title:"Network Architectures",dur:"4:53",desc:"بسیاری از شبکه‌ها بر اساس معیارهای طراحی مشخص ساخته می‌شوند. بررسی Three-tier، Collapsed Core و جریان ترافیک در دیتاسنتر.",link:BASE+"network-architectures-n10-009/"},
 { sec:"2",sub:"2.1",id:"2.1.4",order:24,phase:3,title:"Network Address Translation",dur:"7:02",desc:"NAT برای تغییر آدرس‌های IP در لحظه واقعی استفاده می‌شود. نحوه استفاده از NAT و PAT برای به حداقل رساندن مصرف IP عمومی.",link:BASE+"network-address-translation-n10-009/"},
@@ -387,7 +538,7 @@ const videos = [
 { sec:"2",sub:"2.2",id:"2.2.2",order:29,phase:3,title:"Interface Configurations",dur:"6:40",desc:"هنگام اتصال به شبکه اترنت گزینه‌های پیکربندی مختلفی باید در نظر گرفته شود. Link Aggregation، MTU و Jumbo Frames.",link:BASE+"interface-configurations-n10-009/"},
 { sec:"2",sub:"2.2",id:"2.2.3",order:30,phase:3,title:"Spanning Tree Protocol",dur:"6:06",desc:"یکی از چالش‌های سوئیچینگ نگرانی از Loop‌های شبکه است. نحوه استفاده از STP برای جلوگیری از Loop و بازیابی شبکه.",link:BASE+"spanning-tree-protocol-n10-009/"},
 
-// ── PHASE 4: وایرلس و فیزیکی ──
+// ── PHASE 4 ──
 { sec:"1",sub:"1.5",id:"1.5.1",order:31,phase:4,title:"Wireless Networking",dur:"6:36",desc:"استانداردهای وایرلس متعددی در صنعت IT استفاده می‌شود. بررسی شبکه‌های 802.11، 4G، 5G و ارتباطات ماهواره‌ای.",link:BASE+"wireless-networking-n10-009/"},
 { sec:"2",sub:"2.3",id:"2.3.1",order:32,phase:4,title:"Wireless Technologies",dur:"8:34",desc:"شبکه‌های بی‌سیم شامل تکنولوژی‌های مختلفی هستند. فرکانس‌ها و کانال‌های وایرلس، Band Steering و تأثیرات مقررات.",link:BASE+"wireless-technologies-n10-009/"},
 { sec:"2",sub:"2.3",id:"2.3.2",order:33,phase:4,title:"Wireless Networking (2)",dur:"11:54",desc:"طراحی شبکه وایرلس شامل SSID، BSSID، ESSID، Captive Portal، انواع آنتن و موارد دیگر می‌شود.",link:BASE+"wireless-networking-n10-009-2/"},
@@ -397,7 +548,7 @@ const videos = [
 { sec:"2",sub:"2.4",id:"2.4.2",order:37,phase:4,title:"Power",dur:"7:19",desc:"منبع برق قابل اعتماد بخش مهمی از هر زیرساخت تکنولوژی است. مبانی برق و محافظت در برابر قطع برق با UPS و PDU.",link:BASE+"power-n10-009/"},
 { sec:"2",sub:"2.4",id:"2.4.3",order:38,phase:4,title:"Environmental Factors",dur:"3:29",desc:"ستون فقرات دیتاسنتر محیطی است که تمام تکنولوژی در آن قرار دارد. رطوبت، دما و سیستم‌های اطفا حریق.",link:BASE+"environmental-factors-n10-009/"},
 
-// ── PHASE 5: ابر و معماری مدرن ──
+// ── PHASE 5 ──
 { sec:"1",sub:"1.3",id:"1.3.1",order:39,phase:5,title:"Designing the Cloud",dur:"9:49",desc:"طراحی شبکه ابری چالش‌های فنی متعددی دارد. بررسی NFV، VPC Endpoints، Network Security Groups و موارد دیگر.",link:BASE+"designing-the-cloud-n10-009/"},
 { sec:"1",sub:"1.3",id:"1.3.2",order:40,phase:5,title:"Cloud Models",dur:"5:23",desc:"تفاوت‌های بین SaaS، PaaS و IaaS — نه همه Cloud‌ها یکسان هستند.",link:BASE+"cloud-models-n10-009/"},
 { sec:"1",sub:"1.8",id:"1.8.1",order:41,phase:5,title:"Software Defined Networking",dur:"6:56",desc:"SDN مزایای متعددی نسبت به شبکه‌سازی سنتی دارد. مبانی SDN و نحوه استفاده از SD-WAN برای بهینه‌سازی ترافیک Cloud.",link:BASE+"software-defined-networking-n10-009/"},
@@ -407,7 +558,7 @@ const videos = [
 { sec:"1",sub:"1.8",id:"1.8.5",order:45,phase:5,title:"IPv6 Addressing",dur:"13:50",desc:"IPv6 نسل بعدی آدرس‌دهی IP است. بررسی آدرس‌های IPv6 و روش‌های اتصال شبکه‌های IPv4 و IPv6 با Tunneling، Dual-stack و NAT64.",link:BASE+"ipv6-addressing-n10-009/"},
 { sec:"3",sub:"3.4",id:"3.4.3",order:46,phase:5,title:"IPv6 and SLAAC",dur:"4:53",desc:"آدرس‌دهی خودکار بخشی از استاندارد IPv6 است. بررسی SLAAC، Network Discovery Protocol (NDP) و آدرس‌دهی خودکار دستگاه‌های IPv6.",link:BASE+"ipv6-and-slaac-n10-009/"},
 
-// ── PHASE 6: عملیات شبکه ──
+// ── PHASE 6 ──
 { sec:"3",sub:"3.4",id:"3.4.1",order:47,phase:6,title:"DHCP",dur:"8:51",desc:"ما به DHCP برای تخصیص خودکار آدرس به دستگاه‌های شبکه متکی هستیم. فرایند DHCP و نحوه استفاده از DHCP Relay.",link:BASE+"dhcp-n10-009/"},
 { sec:"3",sub:"3.4",id:"3.4.2",order:48,phase:6,title:"Configuring DHCP",dur:"10:18",desc:"پیکربندی DHCP Server به تنظیمات مختلفی نیاز دارد. DHCP Pool، Address Reservation، DHCP Options و فرایند Lease.",link:BASE+"configuring-dhcp-n10-009/"},
 { sec:"3",sub:"3.4",id:"3.4.4",order:49,phase:6,title:"An Overview of DNS",dur:"16:54",desc:"DNS بخش حیاتی هر شبکه است. بررسی DNS، Name Resolution محلی، Forward/Reverse Lookup، Recursive Query و امنیت DNS.",link:BASE+"an-overview-of-dns-n10-009/"},
@@ -424,7 +575,7 @@ const videos = [
 { sec:"3",sub:"3.3",id:"3.3.1",order:60,phase:6,title:"Disaster Recovery",dur:"12:09",desc:"برنامه‌ریزی برای هر اتفاق غیرمنتظره‌ای ضروری است. نحوه اندازه‌گیری Outage، گزینه‌های Site Resiliency و آماده‌سازی برای سناریوی فاجعه.",link:BASE+"disaster-recovery-n10-009/"},
 { sec:"3",sub:"3.3",id:"3.3.2",order:61,phase:6,title:"Network Redundancy",dur:"4:06",desc:"حفظ پیوسته کار سیستم‌ها بخش مهمی از هر طراحی شبکه است. بررسی پیکربندی‌های Active-Active و Active-Passive.",link:BASE+"network-redundancy-n10-009/"},
 
-// ── PHASE 7: امنیت شبکه ──
+// ── PHASE 7 ──
 { sec:"4",sub:"4.1",id:"4.1.1",order:62,phase:7,title:"Security Concepts",dur:"13:06",desc:"امنیت اطلاعات حوزه‌ای گسترده با مفاهیم متعدد است. بررسی حالت‌های داده، گواهی دیجیتال، CA، IAM و موارد دیگر.",link:BASE+"security-concepts-n10-009/"},
 { sec:"4",sub:"4.1",id:"4.1.2",order:63,phase:7,title:"Authentication",dur:"12:46",desc:"فرایند احراز هویت بخش مهمی از هر زیرساخت است. بررسی Single Sign-On، RADIUS، LDAP، SAML و سایر تکنولوژی‌های احراز هویت.",link:BASE+"authentication-n10-009/"},
 { sec:"4",sub:"4.1",id:"4.1.3",order:64,phase:7,title:"Security Technologies",dur:"7:15",desc:"روش‌های متعددی برای کمک به ایمن کردن سازمان وجود دارد. بررسی Honeypot، Honeynet، Risk، Vulnerability، Exploit، Threat و CIA Triad.",link:BASE+"security-technologies-n10-009/"},
@@ -440,7 +591,7 @@ const videos = [
 { sec:"4",sub:"4.3",id:"4.3.1",order:74,phase:7,title:"Device Security",dur:"9:03",desc:"روش‌های بهینه زیادی برای ایمن نگه داشتن دستگاه‌ها وجود دارد. غیرفعال کردن Port، تغییر اعتبارنامه پیش‌فرض، MAC Filtering و موارد دیگر.",link:BASE+"device-security-n10-009/"},
 { sec:"4",sub:"4.3",id:"4.3.2",order:75,phase:7,title:"Security Rules",dur:"10:23",desc:"اغلب از قوانین برای اجازه یا جلوگیری از دسترسی به منابع مهم استفاده می‌کنیم. ACL، Firewall Rule، Content Filtering، Screened Subnet و Security Zone.",link:BASE+"security-rules-n10-009/"},
 
-// ── PHASE 8: عیب‌یابی ──
+// ── PHASE 8 ──
 { sec:"5",sub:"5.1",id:"5.1.1",order:76,phase:8,title:"Network Troubleshooting Methodology",dur:"8:04",desc:"متخصصان شبکه هر روز مشکلات را حل می‌کنند. نحوه ساده‌سازی مشکلات پیچیده با یک متدولوژی عیب‌یابی مشخص.",link:BASE+"network-troubleshooting-methodology-n10-009/"},
 { sec:"5",sub:"5.2",id:"5.2.1",order:77,phase:8,title:"Cable Issues",dur:"14:40",desc:"اگر لایه فیزیکی درست نباشد، شبکه مشکلات بزرگی خواهد داشت. بررسی Fiber Mismatch، Cable Category، Crosstalk، EMI، Attenuation و Termination صحیح.",link:BASE+"cable-issues-n10-009/"},
 { sec:"5",sub:"5.2",id:"5.2.2",order:78,phase:8,title:"Interface Issues",dur:"9:29",desc:"یک Interface شبکه می‌تواند اطلاعات زیادی درباره سلامت شبکه بدهد. بررسی CRC Error، Runt، Giant، Drop، Error Disabled State و Port Status.",link:BASE+"interface-issues-n10-009/"},
@@ -457,12 +608,12 @@ const videos = [
 
 // ── Metadata ──
 const sectionMeta = {
-  "0":{heading:"Section 0 — The N10-009 CompTIA Network+ Exam",anchor:"sec-0"},
-  "1":{heading:"Section 1 — Networking Concepts (مفاهیم شبکه)",anchor:"sec-1"},
-  "2":{heading:"Section 2 — Network Implementation (پیاده‌سازی شبکه)",anchor:"sec-2"},
-  "3":{heading:"Section 3 — Network Operations (عملیات شبکه)",anchor:"sec-3"},
-  "4":{heading:"Section 4 — Network Security (امنیت شبکه)",anchor:"sec-4"},
-  "5":{heading:"Section 5 — Network Troubleshooting (عیب‌یابی شبکه)",anchor:"sec-5"}
+  "0":{heading:"Section 0 — The N10-009 CompTIA Network+ Exam",anchor:"sec-0", domainSec:null},
+  "1":{heading:"Section 1 — Networking Concepts (مفاهیم شبکه)",anchor:"sec-1", domainSec:"1"},
+  "2":{heading:"Section 2 — Network Implementation (پیاده‌سازی شبکه)",anchor:"sec-2", domainSec:"2"},
+  "3":{heading:"Section 3 — Network Operations (عملیات شبکه)",anchor:"sec-3", domainSec:"3"},
+  "4":{heading:"Section 4 — Network Security (امنیت شبکه)",anchor:"sec-4", domainSec:"4"},
+  "5":{heading:"Section 5 — Network Troubleshooting (عیب‌یابی شبکه)",anchor:"sec-5", domainSec:"5"}
 };
 
 const subMeta = {
@@ -506,10 +657,10 @@ const phaseMeta = {
 };
 
 // ── State ──
-let activeView   = 'section'; // 'section' | 'order'
+let activeView   = 'section';
 let secFilter    = 'all';
 let phaseFilter  = 'all';
-const statuses   = {};        // id -> 'none'|'wip'|'done'
+const statuses   = {};
 
 // ── Storage helpers ──
 function saveStatus(id, val) {
@@ -530,7 +681,6 @@ function cycleStatus(id) {
   const next = cur === 'none' ? 'wip' : cur === 'wip' ? 'done' : 'none';
   saveStatus(id, next);
   updateProgress();
-  // update just this row
   const btn = document.querySelector(`.status-btn[data-id="${id}"]`);
   const row = document.querySelector(`tr[data-id="${id}"]`);
   if (btn) { applyBtnStyle(btn, next); }
@@ -550,6 +700,17 @@ function applyRowStyle(row, status) {
   if (status === 'wip')  row.classList.add('status-wip');
 }
 
+// ── Per-section progress for domain box ──
+function updateDomainPercentages() {
+  ['1','2','3','4','5'].forEach(sec => {
+    const secVideos = videos.filter(v => v.sec === sec);
+    const done = secVideos.filter(v => (statuses[v.id]||'none') === 'done').length;
+    const pct = secVideos.length ? Math.round((done / secVideos.length) * 100) : 0;
+    const el = document.getElementById('dpct-' + sec);
+    if (el) el.textContent = pct + '%';
+  });
+}
+
 function updateProgress() {
   let done = 0, wip = 0;
   videos.forEach(v => {
@@ -565,6 +726,7 @@ function updateProgress() {
   document.getElementById('cnt-none').textContent = none;
   document.getElementById('pbar').style.width = pct + '%';
   document.querySelector('#progress-box div[style]').textContent = pct + '% کامل';
+  updateDomainPercentages();
 }
 
 function resetAll() {
@@ -582,12 +744,22 @@ function makeRow(v, showOrder) {
   const stClass = st === 'done' ? 's-done' : st === 'wip' ? 's-wip' : 's-none';
   const rowCls  = st === 'done' ? 'status-done' : st === 'wip' ? 'status-wip' : '';
   const orderCol = showOrder ? `<td class="td-order">#${v.order}</td>` : '';
+
+  // Check if this video has a dedicated page
+  const pageUrl = VIDEO_PAGE[v.id];
+  let topicHtml;
+  if (pageUrl) {
+    topicHtml = `<span class="page-badge badge-ready">● صفحه</span><a href="${pageUrl}">${v.title}</a>`;
+  } else {
+    topicHtml = `<a href="${v.link}" target="_blank">${v.title}</a>`;
+  }
+
   return `<tr data-id="${v.id}" class="${rowCls}">
     ${orderCol}
     <td class="td-id">${v.id}</td>
     <td class="td-dur">${v.dur}</td>
     <td>
-      <div class="td-topic"><a href="${v.link}" target="_blank">${v.title}</a></div>
+      <div class="td-topic">${topicHtml}</div>
       <div class="td-desc">${v.desc}</div>
     </td>
     <td class="td-status">
@@ -605,6 +777,18 @@ function makeTableHeader(showOrder) {
     <th>عنوان و توضیح</th>
     <th style="width:110px;">وضعیت</th>
   </tr></thead>`;
+}
+
+// ── Build domain button for section heading ──
+function makeDomainBtn(domainSec) {
+  if (!domainSec) return '';
+  const dp = DOMAIN_PAGES[domainSec];
+  if (!dp) return '';
+  if (dp.ready) {
+    return `<a href="${dp.url}" class="sec-domain-btn">● صفحه بخش ←</a>`;
+  } else {
+    return `<span class="sec-domain-soon">صفحه بخش — به زودی</span>`;
+  }
 }
 
 // ── Render ──
@@ -633,7 +817,11 @@ function render() {
       secItems.forEach(v => { if (!subs[v.sub]) subs[v.sub]=[]; subs[v.sub].push(v); });
 
       const div = document.createElement('div');
-      let html = `<h2 class="section-heading" id="${secInfo.anchor}">${secInfo.heading}</h2>`;
+      const domainBtn = makeDomainBtn(secInfo.domainSec);
+      let html = `<h2 class="section-heading" id="${secInfo.anchor}">
+        <span class="section-heading-text">${secInfo.heading}</span>
+        ${domainBtn}
+      </h2>`;
       Object.entries(subs).forEach(([sub, items]) => {
         html += `<div class="subsection-heading">${subMeta[sub]||sub}</div>`;
         html += `<table class="data-table">${makeTableHeader(true)}<tbody>`;
