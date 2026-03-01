@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SARVV — Section 1: Networking Concepts · N10-009</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: "Tahoma", "Verdana", "Arial", sans-serif;
+            font-size: 13px;
+            background-color: #f6f6f6;
+            color: #202020;
+            line-height: 1.5;
+        }
+
+        a { color: #0645ad; text-decoration: underline; }
+        a:visited { color: #0b0080; }
+        a:hover { text-decoration: underline; }
+
+        #page-wrapper { max-width: 1120px; margin: 0 auto; padding: 0 12px 40px; }
+
+        /* ── Breadcrumb ── */
+        #breadcrumb {
+            font-size: 12px; color: #54595d;
+            padding: 6px 0; margin-bottom: 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        #breadcrumb a { color: #0645ad; text-decoration: none; }
+        #breadcrumb a:hover { text-decoration: underline; }
+        #breadcrumb .sep { margin: 0 5px; color: #a2a9b1; }
+
+        /* ── Header ── */
+        #site-header {
+            border-bottom: 1px solid #a2a9b1;
+            padding: 14px 0 10px;
+            margin-bottom: 12px;
+        }
+        #site-title {
+            font-size: 20px; font-weight: bold;
+            font-family: "Times New Roman", serif;
+        }
+        #site-title a { color: #202020; text-decoration: none; }
+        #site-title a:hover { text-decoration: underline; }
+        #site-title span {
+            color: #54595d; font-size: 13px; font-weight: normal;
+            font-family: "Tahoma", sans-serif; margin-right: 10px;
+        }
+        #site-tagline { font-size: 12px; color: #54595d; margin-top: 3px; }
+
+        /* ── Notice bar ── */
+        #notice-bar {
+            background: #eaf3fb; border: 1px solid #a2a9b1;
+            padding: 6px 10px; margin-bottom: 12px; font-size: 12px;
+        }
+
+        /* ── Top Widgets ── */
+        .top-widgets {
+            display: flex; gap: 16px; margin-bottom: 16px;
+            align-items: flex-start; flex-wrap: wrap;
+        }
+
+        /* ── TOC ── */
+        #toc {
+            background: #f8f9fa; border: 1px solid #a2a9b1;
+            padding: 10px 16px 12px; font-size: 12px; min-width: 220px;
+        }
+        #toc-title { font-weight: bold; font-size: 13px; margin-bottom: 6px; }
+        #toc ol { padding-right: 20px; margin: 0; }
+        #toc ol li { margin: 3px 0; }
+        #toc ol li ol { margin-top: 2px; list-style-type: decimal; padding-right: 16px; }
+        #toc a { text-decoration: none; color: #0645ad; }
+        #toc a:hover { text-decoration: underline; }
+
+        /* ── Progress box ── */
+        #progress-box {
+            background: #f8f9fa; border: 1px solid #a2a9b1;
+            padding: 10px 14px; font-size: 12px; min-width: 260px;
+        }
+        #progress-box .pb-title { font-weight: bold; font-size: 13px; margin-bottom: 8px; }
+        .progress-row { display: flex; justify-content: space-between; margin-bottom: 4px; }
+        .progress-row .label { color: #54595d; }
+        .progress-row .val { font-family: "Courier New", monospace; font-weight: bold; }
+        .pbar-wrap {
+            border: 1px solid #a2a9b1; background: #fff;
+            height: 10px; margin-top: 6px; margin-bottom: 2px;
+        }
+        .pbar-fill { height: 100%; background: #3a6b35; transition: width 0.3s; }
+        .pb-legend { font-size: 11px; color: #54595d; margin-top: 6px; }
+        .pb-legend span { display: inline-block; width: 10px; height: 10px; border: 1px solid #a2a9b1; margin-left: 4px; vertical-align: middle; }
+        .leg-done { background: #c8e6c9 !important; }
+        .leg-wip  { background: #fff9c4 !important; }
+        .leg-none { background: #fff !important; }
+
+        /* ── Section info box ── */
+        #sec-info-box {
+            background: #fefef0; border: 1px solid #c8b860;
+            padding: 10px 14px; font-size: 12px; flex: 1; min-width: 280px;
+        }
+        #sec-info-box .sib-title { font-weight: bold; font-size: 13px; margin-bottom: 8px; color: #5a4a00; }
+        .sib-table { width: 100%; border-collapse: collapse; }
+        .sib-table td { padding: 3px 0; border-bottom: 1px solid #e8e0a0; vertical-align: top; }
+        .sib-table td:last-child { border-bottom: none; }
+        .sib-table .sib-key { color: #54595d; white-space: nowrap; padding-left: 12px; min-width: 100px; }
+        .sib-table .sib-val { font-family: "Courier New", monospace; color: #202020; }
+
+        /* ── Section headings ── */
+        .section-heading {
+            font-family: "Times New Roman", serif; font-size: 19px; font-weight: normal;
+            border-bottom: 1px solid #a2a9b1; padding-bottom: 4px;
+            margin-top: 24px; margin-bottom: 2px; color: #202020;
+        }
+        .subsection-heading {
+            font-size: 13px; font-weight: bold; color: #202020;
+            background: #eaecf0; border-right: 3px solid #54595d;
+            padding: 4px 8px; margin-top: 14px; margin-bottom: 0;
+        }
+        .phase-note {
+            font-size: 12px; color: #54595d; margin-bottom: 8px;
+            padding: 4px 8px; background: #fefef0; border-right: 3px solid #c8b860;
+        }
+
+        /* ── Data table ── */
+        .data-table {
+            width: 100%; border-collapse: collapse; font-size: 13px; margin-bottom: 4px;
+        }
+        .data-table th {
+            background: #eaecf0; border: 1px solid #a2a9b1; padding: 4px 10px;
+            text-align: right; font-size: 11px; font-weight: bold; color: #202020;
+        }
+        .data-table td {
+            border: 1px solid #a2a9b1; padding: 6px 10px;
+            vertical-align: middle; text-align: right; background: #fff;
+        }
+        .data-table tbody tr:nth-child(even) td { background: #f8f9fa; }
+        .data-table tbody tr:hover td { background: #eaf3fb; }
+
+        .data-table tr.status-done td   { background: #f0f8f0 !important; }
+        .data-table tr.status-wip td    { background: #fffef0 !important; }
+        .data-table tr.status-done:hover td { background: #e0f0e0 !important; }
+        .data-table tr.status-wip:hover td  { background: #f8f8e0 !important; }
+
+        .td-id {
+            font-family: "Courier New", monospace; font-size: 11px;
+            font-weight: bold; color: #202020; width: 56px; text-align: center;
+            white-space: nowrap;
+        }
+        .td-dur {
+            font-family: "Courier New", monospace; font-size: 11px;
+            color: #54595d; width: 46px; text-align: center; white-space: nowrap;
+        }
+        .td-topic a { font-size: 13px; font-weight: bold; display: block; margin-bottom: 2px; }
+        .td-topic .coming-soon {
+            font-size: 13px; font-weight: bold; display: block; margin-bottom: 2px;
+            color: #a2a9b1; text-decoration: none;
+        }
+        .td-desc { font-size: 12px; color: #54595d; line-height: 1.55; }
+
+        /* ── Page status badge ── */
+        .page-badge {
+            display: inline-block; font-size: 10px; padding: 1px 6px;
+            border: 1px solid; vertical-align: middle; margin-right: 6px;
+            font-family: "Tahoma", sans-serif; white-space: nowrap;
+        }
+        .badge-ready  { background: #e8f5e9; border-color: #5a9a5a; color: #2e6b2e; }
+        .badge-soon   { background: #f8f9fa; border-color: #a2a9b1; color: #54595d; }
+
+        /* ── Video status cell ── */
+        .td-status { width: 100px; text-align: center; vertical-align: middle; }
+        .status-btn {
+            display: inline-block; padding: 3px 8px; font-size: 11px;
+            border: 1px solid #a2a9b1; cursor: pointer; user-select: none;
+            font-family: "Tahoma", sans-serif; white-space: nowrap;
+            background: #f8f9fa; color: #54595d; transition: none;
+        }
+        .status-btn:hover { border-color: #54595d; }
+        .status-btn.s-none { background: #fff; color: #aaa; }
+        .status-btn.s-wip  { background: #fffde7; color: #7a6400; border-color: #c8b860; }
+        .status-btn.s-done { background: #e8f5e9; color: #2e6b2e; border-color: #5a9a5a; font-weight: bold; }
+
+        /* ── Nav strip ── */
+        .sec-nav-strip {
+            background: #f8f9fa; border: 1px solid #a2a9b1;
+            padding: 8px 12px; font-size: 12px; margin-bottom: 16px;
+            display: flex; gap: 0; flex-wrap: wrap; align-items: center;
+        }
+        .sec-nav-strip strong { margin-left: 10px; color: #202020; }
+        .sec-nav-item {
+            padding: 2px 10px; border: 1px solid #a2a9b1;
+            margin-left: 4px; text-decoration: none; color: #0645ad;
+            font-family: "Tahoma", sans-serif; font-size: 12px;
+            background: #fff;
+        }
+        .sec-nav-item:hover { background: #eaf3fb; }
+        .sec-nav-item.current {
+            background: #eaecf0; color: #202020; font-weight: bold;
+            border-color: #54595d; cursor: default;
+        }
+        .sec-nav-item.coming {
+            color: #a2a9b1; border-color: #d0d0d0; cursor: default;
+        }
+
+        /* ── Summary row at bottom ── */
+        .summary-row {
+            background: #f8f9fa; border: 1px solid #a2a9b1;
+            padding: 10px 14px; font-size: 12px; margin-top: 16px;
+            display: flex; gap: 24px; flex-wrap: wrap; align-items: center;
+        }
+        .summary-row .sr-item { color: #54595d; }
+        .summary-row .sr-item strong { color: #202020; font-family: "Courier New", monospace; }
+
+        /* ── No results ── */
+        #no-results {
+            display: none; background: #fff; border: 1px solid #a2a9b1;
+            padding: 30px; text-align: center; color: #54595d; font-size: 13px;
+        }
+
+        /* ── Footer ── */
+        #page-footer {
+            border-top: 1px solid #a2a9b1; margin-top: 30px; padding-top: 10px;
+            font-size: 11px; color: #54595d; text-align: center; line-height: 1.8;
+        }
+        #page-footer a { color: #0645ad; font-size: 11px; }
+    </style>
+</head>
+<body>
+<div id="page-wrapper">
+
+    <!-- Breadcrumb -->
+    <div id="breadcrumb">
+        <a href="../index.html">SARVV — فهرست کامل</a>
+        <span class="sep">›</span>
+        <strong>Section 1 — Networking Concepts</strong>
+    </div>
+
+    <!-- Header -->
+    <div id="site-header">
+        <div id="site-title">
+            <a href="../index.html">SARVV</a> — Section 1: Networking Concepts
+            <span>مفاهیم شبکه · N10-009 · Professor Messer · ۴۵ ویدیو</span>
+        </div>
+        <div id="site-tagline">
+            CompTIA Network+ N10-009 · بخش اول · OSI Model · IP Addressing · Cloud · SDN · IPv6
+        </div>
+    </div>
+
+    <!-- Notice -->
+    <div id="notice-bar">
+        این صفحه فهرست کامل <strong>۴۵ ویدیو</strong> از بخش اول دوره Professor Messer را نشان می‌دهد.
+        ویدیوهایی که صفحه اختصاصی دارند با <span class="page-badge badge-ready">● آماده</span> مشخص شده‌اند.
+        وضعیت یادگیری با صفحه اصلی همگام‌سازی می‌شود.
+    </div>
+
+    <!-- Section Navigator -->
+    <div class="sec-nav-strip">
+        <strong>بخش‌های دوره:</strong>
+        <a class="sec-nav-item" href="../index.html#sec-0">0 — Intro</a>
+        <span class="sec-nav-item current">1 — Concepts</span>
+        <span class="sec-nav-item coming" title="به زودی">2 — Implementation</span>
+        <span class="sec-nav-item coming" title="به زودی">3 — Operations</span>
+        <span class="sec-nav-item coming" title="به زودی">4 — Security</span>
+        <span class="sec-nav-item coming" title="به زودی">5 — Troubleshooting</span>
+    </div>
+
+    <!-- Top Widgets -->
+    <div class="top-widgets">
+
+        <!-- TOC -->
+        <div id="toc">
+            <div id="toc-title">فهرست مطالب</div>
+            <ol>
+                <li><a href="#sub-1-1">1.1 — OSI Model</a></li>
+                <li><a href="#sub-1-2">1.2 — Appliances & Apps</a></li>
+                <li><a href="#sub-1-3">1.3 — The Cloud</a></li>
+                <li><a href="#sub-1-4">1.4 — Ports & Protocols</a></li>
+                <li><a href="#sub-1-5">1.5 — Transmission Media</a></li>
+                <li><a href="#sub-1-6">1.6 — Network Topologies</a></li>
+                <li><a href="#sub-1-7">1.7 — IPv4 Addressing</a></li>
+                <li><a href="#sub-1-8">1.8 — Network Environments</a></li>
+            </ol>
+        </div>
+
+        <!-- Progress box -->
+        <div id="progress-box">
+            <div class="pb-title">پیشرفت Section 1</div>
+            <div class="progress-row"><span class="label">✓ تکمیل‌شده</span><span class="val" id="cnt-done">0</span></div>
+            <div class="progress-row"><span class="label">📖 در حال مطالعه</span><span class="val" id="cnt-wip">0</span></div>
+            <div class="progress-row"><span class="label">○ نخوانده</span><span class="val" id="cnt-none">45</span></div>
+            <div class="pbar-wrap"><div class="pbar-fill" id="pbar" style="width:0%"></div></div>
+            <div id="pbar-pct" style="font-size:11px;color:#54595d;text-align:left;">0% کامل</div>
+            <div class="pb-legend">
+                <span class="leg-done"></span> تکمیل &nbsp;
+                <span class="leg-wip"></span> در حال مطالعه &nbsp;
+                <span class="leg-none"></span> نخوانده
+            </div>
+        </div>
+
+        <!-- Section info -->
+        <div id="sec-info-box">
+            <div class="sib-title">📋 اطلاعات Section 1</div>
+            <table class="sib-table">
+                <tr>
+                    <td class="sib-key">سهم آزمون</td>
+                    <td class="sib-val">~23% نمره کل</td>
+                </tr>
+                <tr>
+                    <td class="sib-key">تعداد ویدیو</td>
+                    <td class="sib-val">45 ویدیو</td>
+                </tr>
+                <tr>
+                    <td class="sib-key">مدت زمان</td>
+                    <td class="sib-val">≈ 4 ساعت 32 دقیقه</td>
+                </tr>
+                <tr>
+                    <td class="sib-key">زیربخش‌ها</td>
+                    <td class="sib-val">1.1 — 1.8</td>
+                </tr>
+                <tr>
+                    <td class="sib-key">موضوعات کلیدی</td>
+                    <td class="sib-val">OSI, IP, Subnetting, Cloud, SDN, IPv6</td>
+                </tr>
+                <tr>
+                    <td class="sib-key">صفحات آماده</td>
+                    <td class="sib-val" id="ready-count">1 از 45</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════ SUBSECTION 1.1 ═══════════════════════════ -->
+    <h2 class="section-heading" id="sub-1-1">1.1 — The OSI Model · مدل OSI</h2>
+    <div class="phase-note">
+        🔑 پایه همه چیز. مدل OSI زبان مشترک متخصصان شبکه است — باید آن را کاملاً بلد باشید.
+    </div>
+    <table class="data-table">
+        <thead><tr>
+            <th style="width:56px;">ID</th>
+            <th style="width:46px;">مدت</th>
+            <th>عنوان · صفحه</th>
+            <th style="width:110px;">وضعیت</th>
+        </tr></thead>
+        <tbody>
+            <tr data-id="1.1.1">
+                <td class="td-id">1.1.1</td>
+                <td class="td-dur">13:51</td>
+                <td>
+                    <div class="td-topic">
+                        <span class="page-badge badge-ready">● آماده</span>
+                        <a href="osi-model.html">Understanding the OSI Model</a>
+                    </div>
+                    <div class="td-desc">هر لایه OSI، پروتکل‌ها، PDU، دستگاه‌ها، مثال‌های واقعی، عیب‌یابی و آزمون خودسنجی.</div>
+                </td>
+                <td class="td-status"><span class="status-btn s-none" data-id="1.1.1" onclick="cycleStatus('1.1.1')">○ نخوانده</span></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- ═══════════════════════════ SUBSECTION 1.2 ═══════════════════════════ -->
+    <h2 class="section-heading" id="sub-1-2">1.2 — Network Appliances and Applications · دستگاه‌ها و پروتکل‌ها</h2>
+    <div class="phase-note">
+        🖥 معرفی سخت‌افزارها و سرویس‌هایی که یک شبکه مدرن را می‌سازند.
+    </div>
+    <table class="data-table">
+        <thead><tr>
+            <th style="width:56px;">ID</th>
+            <th style="width:46px;">مدت</th>
+            <th>عنوان · صفحه</th>
+            <th style="width:110px;">وضعیت</th>
+        </tr></thead>
+        <tbody>
+            <tr data-id="1.2.1">
+                <td class="td-id">1.2.1</td>
+                <td class="td-dur">14:31</td>
+                <td>
+                    <div class="td-topic">
+                        <span class="page-badge badge-soon">○ به زودی</span>
+                        <span class="coming-soon">Networking Devices</span>
+                    </div>
+                    <div class="td-desc">Switch، Router، Firewall، Access Point، Load Balancer و سایر دستگاه‌های شبکه مدرن.</div>
+                </td>
+                <td class="td-status"><span class="status-btn s-none" data-id="1.2.1" onclick="cycleStatus('1.2.1')">○ نخوانده</span></td>
+            </tr>
+            <tr data-id="1.2.2">
+                <td class="td-id">1.2.2</td>
+                <td class="td-dur">13:25</td>
+                <td>
+                    <div class="td-topic">
+                        <span class="page-badge badge-soon">○ به زودی</span>
+                        <span class="coming-soon">Networking Functions</span>
+                    </div>
+                    <div class="td-desc">VPN، CDN، QoS، NTP، Proxy و سرویس‌هایی که ترافیک شبکه را مدیریت می‌کنند.</div>
+                </td>
+                <td class="td-status"><span class="status-btn s-none" data-id="1.2.2" onclick="cycleStatus('1.2.2')">○ نخوانده</span></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- ═══════════════════════════ SUBSECTION 1.3 ═══════════════════════════ -->
+    <h2 class="section-heading" id="sub-1-3">1.3 — The Cloud · ابر</h2>
+    <div class="phase-note">
+        ☁️ مفاهیم ابری در N10-009 وزن بیشتری دارند. SaaS/PaaS/IaaS را به خوبی بشناسید.
+    </div>
+    <table class="data-table">
+        <thead><tr>
+            <th style="width:56px;">ID</th>
+            <th style="width:46px;">مدت</th>
+            <th>عنوان · صفحه</th>
+            <th style="width:110px;">وضعیت</th>
+        </tr></thead>
+        <tbody>
+            <tr data-id="1.3.1">
+                <td class="td-id">1.3.1</td>
+                <td class="td-dur">9:49</td>
+                <td>
+                    <div class="td-topic">
+                        <span class="page-badge badge-soon">○ به زودی</span>
+                        <span class="coming-soon">Designing the Cloud</span>
+                    </div>
+                    <div class="td-desc">NFV، VPC Endpoints، Network Security Groups، Cloud Gateway و طراحی شبکه ابری.</div>
+                </td>
+                <td class="td-status"><span class="status-btn s-none" data-id="1.3.1" onclick="cycleStatus('1.3.1')">○ نخوانده</span></td>
+            </tr>
+            <tr data-id="1.3.2">
+                <td class="td-id">1.3.2</td>
+                <td class="td-dur">5:23</td>
+                <td>
+                    <div class="td-topic">
+                        <span class="page-badge badge-soon">○ به زودی</span>
+                        <span class="coming-soon">Cloud Models</span>
+                    </div>
+                    <div class="td-desc">تفاوت‌های SaaS، PaaS و IaaS — Public، Private و Hybrid Cloud.</div>
+                </td>
+                <td class="td-status"><span class="status-btn s-none" data-id="1.3.2" onclick="cycleStatus('1.3.2')">○ نخوانده</span></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- ═══════════════════════════ SUBSECTION 1.4 ═══════════════════════════ -->
+    <h2 class="section-heading" id="sub-1-4">1.4 — Ports and Protocols · پورت‌ها و پروتکل‌ها</h2>
+    <div class="phase-note">
+        🔌 پورت‌های معروف را حفظ کنید — مستقیماً در سوالات آزمون ظاهر می‌شوند.
+    </div>
+    <table class="data-table">
+        <thead><tr>
+            <th style="width:56px;">ID</th>
+            <th style="width:46px;">مدت</th>
+            <th>عنوان · صفحه</th>
+            <th style="width:110px;">وضعیت</th>
+        </tr></thead>
+        <tbody>
+            <tr data-id="1.4.1">
+                <td class="td-id">1.4.1</td>
+                <td class="td-dur">14:10</td>
+                <td>
+                    <div class="td-topic">
+                        <span class="page-badge badge-soon">○ به زودی</span>
+                        <span class="coming-soon">Introduction to IP</span>
+                    </div>
+                    <div class="td-desc">مبانی پروتکل IP، نحوه عملکرد بسته‌بندی داده و انتقال در شبکه‌های مدرن.</div>
+                </td>
+                <td class="td-status"><span class="status-btn s-none" data-id="1.4.1" onclick="cycleStatus('1.4.1')">○ نخوانده</span></td>
+            </tr>
+            <tr data-id="1.4.4">
+                <td class="td-id">1.4.4</td>
+                <td class="td-dur">3:55</td>
+                <td>
+                    <div class="td-topic">
+                        <span class="page-badge badge-soon">○ به زودی</span>
+                        <span class="coming-soon">Network Communication</span>
+                    </div>
+                    <div class="td-desc">تفاوت Unicast، Multicast، Anycast و Broadcast — انواع ارتباط بین دستگاه‌های شبکه.</div>
+                </td>
+                <td class="td-status"><span class="status-btn s-none" data-id="1.4.4" onclick="cycleStatus('1.4.4')">○ نخوانده</span></td>
+            </tr>
+            <tr data-id="1.4.2">
+                <td class="td-id">1.4.2</td>
+                <td class="td-dur">20:22</td>
+                <td>
+                    <div class="td-topic">
+                        <span class="page-badge badge-soon">○ به زودی</span>
+                        <span class="coming-soon">Common Ports</span>
+                    </div>
+                    <div class="td-desc">پورت‌های معروف: HTTP 80، HTTPS 443، FTP 21، SSH 22، DNS 53، RDP 3389 و ده‌ها پورت دیگر.</div>
+                </td>
+                <td class="td-status"><span class="status-btn s-none" data-id="1.4.2" onclick="cycleStatus('1.4.2')">○ نخوانده</span></td>
+            </tr>
+            <tr data-id="1.4.3">
+                <td class="td-id">1.4.3</td>
+                <td class="td-dur">8:26</td>
+                <td>
+                    <div class="td-topic">
+                        <span class="page-badge badge-soon">○ به زودی</span>
+                        <span class="coming-soon">Other Useful Protocols</span>
+                    </div>
+                    <div class="td-desc">ICMP (ping / traceroute)، GRE Tunneling و IPSec — پروتکل‌های مکمل ضروری.</div>
+                </td>
+                <td class="td-status"><span class="status-btn s-none" data-id="1.4.3" onclick="cycleStatus('1.4.3')">○ نخوانده</span></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- ═══════════════════════════ SUBSECTION 1.5 ═══════════════════════════ -->
+    <h2 class="section-heading" id="sub-1-5">1.5 — Transmission Media · رسانه انتقال</h2>
+    <div class="phase-note">
+        📦 کابل، کانکتور، ترانسیور و استانداردهای اترنت — بخشی حفظیاتی که چند بار باید مرور شود.
+    </div>
+    <table class="data-table">
+        <thead><tr>
+            <th style="width:56px;">ID</th>
+            <th style="width:46px;">مدت</th>
+            <th>عنوان · صفحه</th>
+            <th style="width:110px;">وضعیت</th>
+        </tr></thead>
+        <tbody>
+            <tr data-id="1.5.1">
+                <td class="td-id">1.5.1</td>
+                <td class="td-dur">6:36</td>
+                <td>
+                    <div class="td-topic">
+                        <span class="page-badge badge-soon">○ به زودی</span>
+                        <span class="coming-soon">Wireless Networking</span>
+                    </div>
+                    <div class="td-desc">استانداردهای 802.11، 4G، 5G و ارتباطات ماهواره‌ای — رسانه‌های بی‌سیم.</div>
+                </td>
+                <td class="td-status"><span class="status-btn s-none" data-id="1.5.1" onclick="cycleStatus('1.5.1')">○ نخوانده</span></td>
+            </tr>
+            <tr data-id="1.5.2">
+                <td class="td-id">1.5.2</td>
+                <td class="td-dur">4:04</td>
+                <td>
+                    <div class="td-topic">
+                        <span class="page-badge badge-soon">○ به زودی</span>
+                        <span class="coming-soon">Ethernet Standards</span>
+                    </div>
+                    <div class="td-desc">استانداردهای بین‌المللی 10BASE-T، 100BASE-TX، 1000BASE-T، 10GBASE-T.</div>
+                </td>
+                <td class="td-status"><span class="status-btn s-none" data-id="1.5.2" onclick="cycleStatus('1.5.2')">○ نخوانده</span></td>
+            </tr>
+            <tr data-id="1.5.3">
+                <td class="td-id">1.5.3</td>
+                <td class="td-dur">3:55</td>
+                <td>
+                    <div class="td-topic">
+                        <span class="page-badge badge-soon">○ به زودی</span>
+                        <span class="coming-soon">Optical Fiber</span>
+                    </div>
+                    <div class="td-desc">فیبر نوری Multimode (OM3/OM4) و Single-mode — برای فاصله‌های زیاد.</div>
+                </td>
+                <td class="td-status"><span class="status-btn s-none" data-id="1.5.3" onclick="cycleStatus('1.5.3')">○ نخوانده</span></td>
+            </tr>
+            <tr data-id="1.5.4">
+                <td class="td-id">1.5.4</td>
+                <td class="td-dur">7:21</td>
+                <td>
+                    <div class="td-topic">
+                        <span class="page-badge badge-soon">○ به زودی</span>
+                        <span class="coming-soon">Copper Cabling</span>
+                    </div>
+                    <div class="td-desc">کابل Twisted Pair (Cat5e / Cat6 / Cat6a)، Coax و کابل‌های Plenum-rated.</div>
+                </td>
+                <td class="td-status"><span class="status-btn s-none" data-id="1.5.4" onclick="cycleStatus('1.5.4')">○ نخوانده</span></td>
+            </tr>
+            <tr data-id="1.5.5">
+                <td class="td-id">1.5.5</td>
+                <td class="td-dur">4:51</td>
+                <td>
+                    <div class="td-topic">
+                        <span class="page-badge badge-soon">○ به زودی</span>
+                        <span class="coming-soon">Network Transceivers</span>
+                    </div>
+                    <div class="td-desc">ترانسیورهای ماژولار: SFP، SFP+ (10G)، QSFP (40G) و QSFP+ (100G).</div>
+                </td>
+                <td class="td-status"><span class="status-btn s-none" data-id="1.5.5" onclick="cycleStatus('1.5.5')">○ نخوانده</span></td>
+            </tr>
+            <tr data-id="1.5.6">
+                <td class="td-id">1.5.6</td>
+                <td class="td-dur">3:56</td>
+                <td>
+                    <div class="td-topic">
+                        <span class="page-badge badge-soon">○ به زودی</span>
+                        <span class="coming-soon">Fiber Connectors</span>
+                    </div>
+                    <div class="td-desc">کانکتورهای فیبر نوری: LC، SC، ST و MPO/MTP — کوچک‌ترین تا بزرگ‌ترین.</div>
+                </td>
+                <td class="td-status"><span class="status-btn s-none" data-id="1.5.6" onclick="cycleStatus('1.5.6')">○ نخوانده</span></td>
+            </tr>
+            <tr data-id="1.5.7">
+                <td class="td-id">1.5.7</td>
+                <td class="td-dur">3:31</td>
+                <td>
+                    <div class="td-topic">
+                        <span class="page-badge badge-soon">○ به زودی</span>
+                        <span class="coming-soon">Copper Connectors</span>
+                    </div>
+                    <div class="td-desc">کانکتورهای مسی: RJ11، RJ45، F-connector و BNC — هر کدام برای چه کاری.</div>
+                </td>
+                <td class="td-status"><span class="status-btn s-none" data-id="1.5.7" onclick="cycleStatus('1.5.7')">○ نخوانده</span></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- ═══════════════════════════ SUBSECTION 1.6 ═══════════════════════════ -->
+    <h2 class="section-heading" id="sub-1-6">1.6 — Network Topologies · توپولوژی شبکه</h2>
+    <div class="phase-note">
+        🔀 توپولوژی‌ها و معماری‌هایی که شبکه‌های واقعی بر اساس آن‌ها ساخته می‌شوند.
+    </div>
+    <table class="data-table">
+        <thead><tr>
+            <th style="width:56px;">ID</th>
+            <th style="width:46px;">مدت</th>
+            <th>عنوان · صفحه</th>
+            <th style="width:110px;">وضعیت</th>
+        </tr></thead>
+        <tbody>
+            <tr data-id="1.6.1">
+                <td class="td-id">1.6.1</td>
+                <td class="td-dur">4:42</td>
+                <td>
+                    <div class="td-topic">
+                        <span class="page-badge badge-soon">○ به زودی</span>
+                        <span class="coming-soon">Network Topologies</span>
+                    </div>
+                    <div class="td-desc">Star، Mesh، Bus، Ring، Hybrid، Spine and Leaf — انواع توپولوژی شبکه.</div>
+                </td>
+                <td class="td-status"><span class="status-btn s-none" data-id="1.6.1" onclick="cycleStatus('1.6.1')">○ نخوانده</span></td>
+            </tr>
+            <tr data-id="1.6.2">
+                <td class="td-id">1.6.2</td>
+                <td class="td-dur">4:53</td>
+                <td>
+                    <div class="td-topic">
+                        <span class="page-badge badge-soon">○ به زودی</span>
+                        <span class="coming-soon">Network Architectures</span>
+                    </div>
+                    <div class="td-desc">Three-tier، Collapsed Core، معماری دیتاسنتر و جریان ترافیک North-South/East-West.</div>
+                </td>
+                <td class="td-status"><span class="status-btn s-none" data-id="1.6.2" onclick="cycleStatus('1.6.2')">○ نخوانده</span></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- ═══════════════════════════ SUBSECTION 1.7 ═══════════════════════════ -->
+    <h2 class="section-heading" id="sub-1-7">1.7 — IPv4 Addressing · آدرس‌دهی IPv4</h2>
+    <div class="phase-note">
+        🧮 مهم‌ترین زیربخش برای آزمون. Subnetting را آنقدر تمرین کنید تا به صورت ذهنی انجام دهید — ویدیوی Magic Number را چند بار تماشا کنید.
+    </div>
+    <table class="data-table">
+        <thead><tr>
+            <th style="width:56px;">ID</th>
+            <th style="width:46px;">مدت</th>
+            <th>عنوان · صفحه</th>
+            <th style="width:110px;">وضعیت</th>
+        </tr></thead>
+        <tbody>
+            <tr data-id="1.7.1">
+                <td class="td-id">1.7.1</td>
+                <td class="td-dur">9:15</td>
+                <td>
+                    <div class="td-topic">
+                        <span class="page-badge badge-soon">○ به زودی</span>
+                        <span class="coming-soon">Binary Math</span>
+                    </div>
+                    <div class="td-desc">تبدیل بین دسیمال و باینری — پایه محاسبات Subnetting. بدون این ویدیو بقیه منطقی نیستند.</div>
+                </td>
+                <td class="td-status"><span class="status-btn s-none" data-id="1.7.1" onclick="cycleStatus('1.7.1')">○ نخوانده</span></td>
+            </tr>
+            <tr data-id="1.7.2">
+                <td class="td-id">1.7.2</td>
+                <td class="td-dur">11:06</td>
+                <td>
+                    <div class="td-topic">
+                        <span class="page-badge badge-soon">○ به زودی</span>
+                        <span class="coming-soon">IPv4 Addressing</span>
+                    </div>
+                    <div class="td-desc">مبانی IPv4، آدرس‌دهی خودکار APIPA، تفاوت IP عمومی / خصوصی و Loopback.</div>
+                </td>
+                <td class="td-status"><span class="status-btn s-none" data-id="1.7.2" onclick="cycleStatus('1.7.2')">○ نخوانده</span></td>
+            </tr>
+            <tr data-id="1.7.3">
+                <td class="td-id">1.7.3</td>
+                <td class="td-dur">10:58</td>
+                <td>
+                    <div class="td-topic">
+                        <span class="page-badge badge-soon">○ به زودی</span>
+                        <span class="coming-soon">Classful Subnetting</span>
+                    </div>
+                    <div class="td-desc">کلاس‌های A، B و C — مبانی Subnetting کلاسیک IPv4.</div>
+                </td>
+                <td class="td-status"><span class="status-btn s-none" data-id="1.7.3" onclick="cycleStatus('1.7.3')">○ نخوانده</span></td>
+            </tr>
+            <tr data-id="1.7.4">
+                <td class="td-id">1.7.4</td>
+                <td class="td-dur">9:00</td>
+                <td>
+                    <div class="td-topic">
+                        <span class="page-badge badge-soon">○ به زودی</span>
+                        <span class="coming-soon">IPv4 Subnet Masks</span>
+                    </div>
+                    <div class="td-desc">VLSM و CIDR Notation — /24، /25، /26 و نحوه محاسبه Subnet Mask.</div>
+                </td>
+                <td class="td-status"><span class="status-btn s-none" data-id="1.7.4" onclick="cycleStatus('1.7.4')">○ نخوانده</span></td>
+            </tr>
+            <tr data-id="1.7.5">
+                <td class="td-id">1.7.5</td>
+                <td class="td-dur">9:46</td>
+                <td>
+                    <div class="td-topic">
+                        <span class="page-badge badge-soon">○ به زودی</span>
+                        <span class="coming-soon">Calculating IPv4 Subnets</span>
+                    </div>
+                    <div class="td-desc">تقسیم شبکه با VLSM — محاسبه Network Address، Broadcast و تعداد Host‌ها.</div>
+                </td>
+                <td class="td-status"><span class="status-btn s-none" data-id="1.7.5" onclick="cycleStatus('1.7.5')">○ نخوانده</span></td>
+            </tr>
+            <tr data-id="1.7.6">
+                <td class="td-id">1.7.6</td>
+                <td class="td-dur">21:09</td>
+                <td>
+                    <div class="td-topic">
+                        <span class="page-badge badge-soon">○ به زودی</span>
+                        <span class="coming-soon">Magic Number Subnetting</span>
+                    </div>
+                    <div class="td-desc">⭐ مهم‌ترین ویدیوی این بخش. روش Magic Number برای محاسبه سریع Subnet — این را حفظ کنید.</div>
+                </td>
+                <td class="td-status"><span class="status-btn s-none" data-id="1.7.6" onclick="cycleStatus('1.7.6')">○ نخوانده</span></td>
+            </tr>
+            <tr data-id="1.7.7">
+                <td class="td-id">1.7.7</td>
+                <td class="td-dur">17:03</td>
+                <td>
+                    <div class="td-topic">
+                        <span class="page-badge badge-soon">○ به زودی</span>
+                        <span class="coming-soon">Seven Second Subnetting</span>
+                    </div>
+                    <div class="td-desc">میانبر Seven Second برای سریع‌ترین محاسبه Subnet در آزمون.</div>
+                </td>
+                <td class="td-status"><span class="status-btn s-none" data-id="1.7.7" onclick="cycleStatus('1.7.7')">○ نخوانده</span></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- ═══════════════════════════ SUBSECTION 1.8 ═══════════════════════════ -->
+    <h2 class="section-heading" id="sub-1-8">1.8 — Network Environments · محیط‌های شبکه مدرن</h2>
+    <div class="phase-note">
+        🚀 SDN، VXLAN، Zero Trust و IPv6 — مفاهیم جدیدتری که در N10-009 وزن بیشتری پیدا کرده‌اند.
+    </div>
+    <table class="data-table">
+        <thead><tr>
+            <th style="width:56px;">ID</th>
+            <th style="width:46px;">مدت</th>
+            <th>عنوان · صفحه</th>
+            <th style="width:110px;">وضعیت</th>
+        </tr></thead>
+        <tbody>
+            <tr data-id="1.8.1">
+                <td class="td-id">1.8.1</td>
+                <td class="td-dur">6:56</td>
+                <td>
+                    <div class="td-topic">
+                        <span class="page-badge badge-soon">○ به زودی</span>
+                        <span class="coming-soon">Software Defined Networking</span>
+                    </div>
+                    <div class="td-desc">SDN، SD-WAN، Control Plane / Data Plane — شبکه‌سازی مدیریت‌شده نرم‌افزاری.</div>
+                </td>
+                <td class="td-status"><span class="status-btn s-none" data-id="1.8.1" onclick="cycleStatus('1.8.1')">○ نخوانده</span></td>
+            </tr>
+            <tr data-id="1.8.2">
+                <td class="td-id">1.8.2</td>
+                <td class="td-dur">5:17</td>
+                <td>
+                    <div class="td-topic">
+                        <span class="page-badge badge-soon">○ به زودی</span>
+                        <span class="coming-soon">Virtual Extensible LAN (VXLAN)</span>
+                    </div>
+                    <div class="td-desc">VXLAN برای دیتاسنترهای بزرگ — مقیاس‌پذیری تا 16 میلیون شبکه مجازی.</div>
+                </td>
+                <td class="td-status"><span class="status-btn s-none" data-id="1.8.2" onclick="cycleStatus('1.8.2')">○ نخوانده</span></td>
+            </tr>
+            <tr data-id="1.8.3">
+                <td class="td-id">1.8.3</td>
+                <td class="td-dur">6:41</td>
+                <td>
+                    <div class="td-topic">
+                        <span class="page-badge badge-soon">○ به زودی</span>
+                        <span class="coming-soon">Zero Trust</span>
+                    </div>
+                    <div class="td-desc">مدل امنیتی Zero Trust، Least Privilege، Policy-based Auth و SASE.</div>
+                </td>
+                <td class="td-status"><span class="status-btn s-none" data-id="1.8.3" onclick="cycleStatus('1.8.3')">○ نخوانده</span></td>
+            </tr>
+            <tr data-id="1.8.4">
+                <td class="td-id">1.8.4</td>
+                <td class="td-dur">8:20</td>
+                <td>
+                    <div class="td-topic">
+                        <span class="page-badge badge-soon">○ به زودی</span>
+                        <span class="coming-soon">Infrastructure as Code</span>
+                    </div>
+                    <div class="td-desc">IaC، Ansible Playbooks، Terraform، Source Control و استقرار خودکار زیرساخت.</div>
+                </td>
+                <td class="td-status"><span class="status-btn s-none" data-id="1.8.4" onclick="cycleStatus('1.8.4')">○ نخوانده</span></td>
+            </tr>
+            <tr data-id="1.8.5">
+                <td class="td-id">1.8.5</td>
+                <td class="td-dur">13:50</td>
+                <td>
+                    <div class="td-topic">
+                        <span class="page-badge badge-soon">○ به زودی</span>
+                        <span class="coming-soon">IPv6 Addressing</span>
+                    </div>
+                    <div class="td-desc">آدرس‌های IPv6، Tunneling، Dual-stack و NAT64 — اتصال دنیای IPv4 و IPv6.</div>
+                </td>
+                <td class="td-status"><span class="status-btn s-none" data-id="1.8.5" onclick="cycleStatus('1.8.5')">○ نخوانده</span></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- Summary row -->
+    <div class="summary-row">
+        <span class="sr-item">مجموع ویدیوها: <strong>45</strong></span>
+        <span class="sr-item">مجموع زمان: <strong>≈ 4h 32min</strong></span>
+        <span class="sr-item">صفحات آماده: <strong>1</strong></span>
+        <span class="sr-item">صفحات در دست ساخت: <strong>44</strong></span>
+        <span class="sr-item" style="margin-right:auto;">
+            <a href="../index.html">← بازگشت به فهرست کامل</a>
+        </span>
+    </div>
+
+    <!-- Footer -->
+    <div id="page-footer">
+        محتوا بر اساس دوره رایگان
+        <a href="https://www.professormesser.com/network-plus/n10-009/n10-009-video/n10-009-training-course/" target="_blank">Professor Messer N10-009</a>
+        &nbsp;·&nbsp; <a href="../index.html">SARVV — فهرست کامل</a> &nbsp;·&nbsp; SARVV &nbsp;·&nbsp; ۱۴۰۵
+    </div>
+</div>
+
+<script>
+// ── Same localStorage key prefix as root index.html ──
+const STORE_KEY = "sarvv_n10009_";
+
+// All video IDs in Section 1
+const SEC1_IDS = [
+    "1.1.1",
+    "1.2.1","1.2.2",
+    "1.3.1","1.3.2",
+    "1.4.1","1.4.4","1.4.2","1.4.3",
+    "1.5.1","1.5.2","1.5.3","1.5.4","1.5.5","1.5.6","1.5.7",
+    "1.6.1","1.6.2",
+    "1.7.1","1.7.2","1.7.3","1.7.4","1.7.5","1.7.6","1.7.7",
+    "1.8.1","1.8.2","1.8.3","1.8.4","1.8.5"
+];
+// Note: 1.5.x has 7 items (1.5.1–1.5.7), total = 1+2+2+4+7+2+7+5 = 30 in these subsections
+// Wait: original index.html has section 1 videos:
+// 1.1.1, 1.2.1, 1.2.2, 1.3.1, 1.3.2,
+// 1.4.1, 1.4.4, 1.4.2, 1.4.3,
+// 1.5.4, 1.5.3, 1.5.7, 1.5.6, 1.5.5, 1.5.2, 1.5.1,
+// 1.6.1, 1.6.2,
+// 1.7.1, 1.7.2, 1.7.3, 1.7.4, 1.7.5, 1.7.6, 1.7.7
+// 1.8.1, 1.8.2, 1.8.3, 1.8.4, 1.8.5
+// = 1+2+2+4+7+2+7+5 = 30 videos
+
+// ── Status helpers ──
+function getStatus(id) {
+    try { return localStorage.getItem(STORE_KEY + id) || 'none'; } catch(e) { return 'none'; }
+}
+
+function saveStatus(id, val) {
+    try { localStorage.setItem(STORE_KEY + id, val); } catch(e) {}
+}
+
+function cycleStatus(id) {
+    const cur = getStatus(id);
+    const next = cur === 'none' ? 'wip' : cur === 'wip' ? 'done' : 'none';
+    saveStatus(id, next);
+
+    const btn = document.querySelector(`.status-btn[data-id="${id}"]`);
+    const row = document.querySelector(`tr[data-id="${id}"]`);
+    if (btn) applyBtnStyle(btn, next);
+    if (row) applyRowStyle(row, next);
+    updateProgress();
+}
+
+function applyBtnStyle(btn, status) {
+    btn.classList.remove('s-none','s-wip','s-done');
+    if (status === 'wip')       { btn.classList.add('s-wip');  btn.textContent = '📖 در حال مطالعه'; }
+    else if (status === 'done') { btn.classList.add('s-done'); btn.textContent = '✓ تکمیل'; }
+    else                        { btn.classList.add('s-none'); btn.textContent = '○ نخوانده'; }
+}
+
+function applyRowStyle(row, status) {
+    row.classList.remove('status-done','status-wip');
+    if (status === 'done') row.classList.add('status-done');
+    if (status === 'wip')  row.classList.add('status-wip');
+}
+
+function updateProgress() {
+    let done = 0, wip = 0;
+    SEC1_IDS.forEach(id => {
+        const s = getStatus(id);
+        if (s === 'done') done++;
+        else if (s === 'wip') wip++;
+    });
+    const total = SEC1_IDS.length;
+    const none = total - done - wip;
+    const pct = Math.round((done / total) * 100);
+
+    document.getElementById('cnt-done').textContent = done;
+    document.getElementById('cnt-wip').textContent  = wip;
+    document.getElementById('cnt-none').textContent = none;
+    document.getElementById('pbar').style.width = pct + '%';
+    document.getElementById('pbar-pct').textContent = pct + '% کامل';
+}
+
+// ── Init: load all statuses ──
+function init() {
+    SEC1_IDS.forEach(id => {
+        const s = getStatus(id);
+        if (s === 'none') return;
+        const btn = document.querySelector(`.status-btn[data-id="${id}"]`);
+        const row = document.querySelector(`tr[data-id="${id}"]`);
+        if (btn) applyBtnStyle(btn, s);
+        if (row) applyRowStyle(row, s);
+    });
+    updateProgress();
+}
+
+init();
+</script>
+</body>
+</html>
