@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SARVV — OSI Model · N10-009 · 1.1</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: "Tahoma", "Verdana", "Arial", sans-serif;
+            font-size: 13px;
+            background-color: #f6f6f6;
+            color: #202020;
+            line-height: 1.5;
+        }
+
+        a { color: #0645ad; text-decoration: underline; }
+        a:visited { color: #0b0080; }
+        a:hover { text-decoration: underline; }
+
+        #page-wrapper { max-width: 1120px; margin: 0 auto; padding: 0 12px 40px; }
+
+        /* ── Header ── */
+        #site-header {
+            border-bottom: 1px solid #a2a9b1;
+            padding: 14px 0 10px;
+            margin-bottom: 12px;
+        }
+        #site-title {
+            font-size: 20px; font-weight: bold;
+            font-family: "Times New Roman", serif;
+        }
+        #site-title a { color: #202020; text-decoration: none; }
+        #site-title a:hover { text-decoration: underline; }
+        #site-title span {
+            color: #54595d; font-size: 13px; font-weight: normal;
+            font-family: "Tahoma", sans-serif; margin-right: 10px;
+        }
+        #site-tagline { font-size: 12px; color: #54595d; margin-top: 3px; }
+
+        /* ── Notice bar ── */
+        #notice-bar {
+            background: #eaf3fb; border: 1px solid #a2a9b1;
+            padding: 6px 10px; margin-bottom: 12px; font-size: 12px;
+        }
+
+        /* ── Two-column layout ── */
+        .top-widgets {
+            display: flex; gap: 16px; margin-bottom: 16px;
+            align-items: flex-start; flex-wrap: wrap;
+        }
+
+        /* ── TOC ── */
+        #toc {
+            background: #f8f9fa; border: 1px solid #a2a9b1;
+            padding: 10px 16px 12px; font-size: 12px; min-width: 200px;
+        }
+        #toc-title { font-weight: bold; font-size: 13px; margin-bottom: 6px; }
+        #toc ol { padding-right: 20px; margin: 0; }
+        #toc ol li { margin: 3px 0; }
+        #toc a { text-decoration: none; color: #0645ad; }
+        #toc a:hover { text-decoration: underline; }
+
+        /* ── Info box ── */
+        .info-box {
+            background: #f8f9fa; border: 1px solid #a2a9b1;
+            padding: 10px 14px; font-size: 12px; flex: 1; min-width: 260px;
+        }
+        .info-box .ib-title { font-weight: bold; font-size: 13px; margin-bottom: 8px; }
+
+        /* ── Mnemonic box ── */
+        #mnemonic-box {
+            background: #fefef0; border: 1px solid #c8b860;
+            padding: 10px 14px; font-size: 12px; flex: 1; min-width: 280px;
+        }
+        #mnemonic-box .mb-title { font-weight: bold; font-size: 13px; margin-bottom: 8px; color: #5a4a00; }
+        .mnem-list { list-style: none; padding: 0; }
+        .mnem-list li {
+            padding: 3px 0; border-bottom: 1px solid #e8e0a0;
+            display: flex; align-items: baseline; gap: 0;
+        }
+        .mnem-list li:last-child { border-bottom: none; }
+        .mnem-letter {
+            font-family: "Courier New", monospace; font-weight: bold;
+            color: #5a4a00; min-width: 18px; font-size: 14px;
+        }
+        .mnem-word { color: #202020; margin-left: 2px; }
+        .mnem-sep { color: #a2a9b1; margin: 0 6px; }
+        .mnem-layer { color: #54595d; font-size: 11px; }
+        .mnem-num {
+            font-family: "Courier New", monospace; font-size: 11px;
+            color: #a2a9b1; margin-right: 8px; min-width: 20px; text-align: left;
+        }
+
+        /* ── Section headings ── */
+        .section-heading {
+            font-family: "Times New Roman", serif; font-size: 19px; font-weight: normal;
+            border-bottom: 1px solid #a2a9b1; padding-bottom: 4px;
+            margin-top: 24px; margin-bottom: 2px; color: #202020;
+        }
+        .subsection-heading {
+            font-size: 13px; font-weight: bold; color: #202020;
+            background: #eaecf0; border-right: 3px solid #54595d;
+            padding: 4px 8px; margin-top: 14px; margin-bottom: 0;
+            display: flex; align-items: center; justify-content: space-between;
+            cursor: pointer; user-select: none;
+        }
+        .subsection-heading:hover { background: #e0e2e6; }
+        .subsection-heading .expand-hint {
+            font-size: 11px; color: #54595d; font-weight: normal;
+            font-family: "Tahoma", sans-serif;
+        }
+        .subsection-heading.open .expand-hint::after { content: " ▲"; }
+        .subsection-heading:not(.open) .expand-hint::after { content: " ▼"; }
+
+        /* ── Layer number badge ── */
+        .layer-badge {
+            display: inline-block;
+            font-family: "Courier New", monospace;
+            font-size: 11px; font-weight: bold;
+            padding: 1px 5px; margin-left: 6px;
+            border: 1px solid; vertical-align: middle;
+        }
+
+        /* ── Data table ── */
+        .data-table {
+            width: 100%; border-collapse: collapse; font-size: 13px; margin-bottom: 4px;
+        }
+        .data-table th {
+            background: #eaecf0; border: 1px solid #a2a9b1; padding: 4px 10px;
+            text-align: right; font-size: 11px; font-weight: bold; color: #202020;
+        }
+        .data-table td {
+            border: 1px solid #a2a9b1; padding: 6px 10px;
+            vertical-align: top; text-align: right; background: #fff;
+        }
+        .data-table tbody tr:nth-child(even) td { background: #f8f9fa; }
+        .data-table tbody tr:hover td { background: #eaf3fb; }
+
+        .td-key {
+            font-family: "Courier New", monospace; font-size: 11px;
+            font-weight: bold; color: #54595d; width: 120px; white-space: nowrap;
+            vertical-align: top;
+        }
+        .td-val { font-size: 12px; color: #202020; line-height: 1.6; }
+        .td-val ul { padding-right: 18px; margin: 0; }
+        .td-val ul li { margin: 2px 0; }
+
+        /* ── Collapsible layer body ── */
+        .layer-body { display: none; }
+        .layer-body.open { display: block; }
+
+        /* ── Analogy box ── */
+        .analogy-box {
+            background: #fefef0; border: 1px solid #c8b860;
+            padding: 8px 12px; font-size: 12px; margin-top: 8px;
+            border-right: 3px solid #c8b860;
+        }
+        .analogy-box strong { color: #5a4a00; }
+
+        /* ── Packet table ── */
+        .packet-table {
+            width: 100%; border-collapse: collapse; font-size: 13px;
+            margin-bottom: 4px; direction: ltr;
+        }
+        .packet-table th {
+            background: #eaecf0; border: 1px solid #a2a9b1; padding: 4px 10px;
+            text-align: left; font-size: 11px; font-weight: bold;
+        }
+        .packet-table td {
+            border: 1px solid #a2a9b1; padding: 6px 10px;
+            vertical-align: middle; background: #fff; text-align: left;
+        }
+        .packet-table tbody tr:nth-child(even) td { background: #f8f9fa; }
+        .packet-table tbody tr:hover td { background: #eaf3fb; cursor: pointer; }
+        .packet-table tbody tr.hl td { background: #eaf3fb !important; }
+        .p-num { font-family: "Courier New", monospace; font-size: 15px; font-weight: bold; width: 44px; }
+        .p-proto { font-weight: bold; width: 160px; }
+        .p-detail { font-family: "Courier New", monospace; font-size: 11px; color: #54595d; }
+        .p-badge { font-family: "Courier New", monospace; font-size: 11px; width: 100px; }
+
+        /* ── Quiz ── */
+        #quiz-section { margin-top: 0; }
+        .quiz-q-wrap { margin-bottom: 20px; }
+        .quiz-q-num {
+            font-size: 11px; color: #54595d; font-family: "Courier New", monospace;
+            margin-bottom: 4px;
+        }
+        .quiz-question {
+            font-size: 13px; font-weight: bold; color: #202020;
+            margin-bottom: 8px; line-height: 1.5;
+            direction: ltr; text-align: left;
+            border-right: 3px solid #a2a9b1; padding-right: 8px;
+        }
+        .quiz-options { list-style: none; padding: 0; margin-bottom: 6px; }
+        .quiz-options li {
+            margin: 3px 0;
+            direction: ltr; text-align: left;
+        }
+        .quiz-options li label {
+            display: flex; align-items: flex-start; gap: 8px;
+            padding: 5px 8px; border: 1px solid #a2a9b1;
+            background: #fff; cursor: pointer; font-size: 12px;
+        }
+        .quiz-options li label:hover { background: #eaf3fb; }
+        .quiz-options li label.correct { background: #e8f5e9; border-color: #5a9a5a; color: #2e6b2e; }
+        .quiz-options li label.wrong   { background: #fde8e8; border-color: #c05050; color: #8b0000; }
+        .quiz-options li label.show-correct { background: #e8f5e9; border-color: #5a9a5a; color: #2e6b2e; opacity: 0.75; }
+        .opt-key {
+            font-family: "Courier New", monospace; font-size: 11px;
+            color: #54595d; flex-shrink: 0; min-width: 16px;
+        }
+        .quiz-feedback {
+            font-size: 12px; padding: 6px 10px;
+            border: 1px solid #a2a9b1; margin-bottom: 8px;
+            display: none; line-height: 1.6;
+            direction: ltr; text-align: left;
+        }
+        .quiz-feedback.show { display: block; }
+        .quiz-feedback.ok  { background: #e8f5e9; border-color: #5a9a5a; color: #2e6b2e; }
+        .quiz-feedback.bad { background: #fde8e8; border-color: #c05050; color: #8b0000; }
+
+        .quiz-btn {
+            font-family: "Tahoma", sans-serif; font-size: 12px; padding: 3px 12px;
+            border: 1px solid #a2a9b1; background: #f8f9fa; color: #202020; cursor: pointer;
+        }
+        .quiz-btn:hover { background: #eaf3fb; }
+        .quiz-btn:disabled { opacity: 0.4; cursor: default; }
+
+        .quiz-progress-text {
+            font-size: 11px; color: #54595d;
+            font-family: "Courier New", monospace; margin-bottom: 10px;
+        }
+        .pbar-wrap {
+            border: 1px solid #a2a9b1; background: #fff;
+            height: 8px; margin-bottom: 12px;
+        }
+        .pbar-fill { height: 100%; background: #3a6b35; transition: width 0.3s; }
+
+        .quiz-result {
+            background: #f8f9fa; border: 1px solid #a2a9b1;
+            padding: 20px; text-align: center;
+        }
+        .quiz-result .score {
+            font-family: "Times New Roman", serif;
+            font-size: 36px; color: #202020; margin-bottom: 8px;
+        }
+        .quiz-result .score span { color: #3a6b35; }
+        .quiz-result p { font-size: 12px; color: #54595d; margin-bottom: 12px; }
+
+        /* ── Cheatsheet ── */
+        .cheat-table {
+            width: 100%; border-collapse: collapse; font-size: 12px;
+            margin-bottom: 4px; direction: ltr;
+        }
+        .cheat-table th {
+            background: #eaecf0; border: 1px solid #a2a9b1; padding: 4px 10px;
+            text-align: left; font-size: 11px; font-weight: bold; color: #202020;
+            white-space: nowrap;
+        }
+        .cheat-table td {
+            border: 1px solid #a2a9b1; padding: 6px 10px;
+            vertical-align: middle; background: #fff;
+        }
+        .cheat-table tbody tr:nth-child(even) td { background: #f8f9fa; }
+        .cheat-table tbody tr:hover td { background: #eaf3fb; }
+        .cheat-table .ct-num {
+            font-family: "Courier New", monospace; font-weight: bold;
+            font-size: 14px; width: 40px; text-align: center;
+        }
+        .cheat-table .ct-name { font-weight: bold; width: 110px; }
+        .cheat-table .ct-mono { font-family: "Courier New", monospace; font-size: 11px; color: #54595d; }
+        .trouble-tag {
+            display: inline-block; font-size: 10px; padding: 0 5px;
+            background: #fde8e8; border: 1px solid #e0a0a0;
+            color: #8b0000; margin: 1px; white-space: nowrap;
+        }
+
+        /* ── No results ── */
+        #no-results {
+            display: none; background: #fff; border: 1px solid #a2a9b1;
+            padding: 30px; text-align: center; color: #54595d; font-size: 13px;
+        }
+
+        /* ── Footer ── */
+        #page-footer {
+            border-top: 1px solid #a2a9b1; margin-top: 30px; padding-top: 10px;
+            font-size: 11px; color: #54595d; text-align: center; line-height: 1.8;
+        }
+        #page-footer a { color: #0645ad; font-size: 11px; }
+
+        /* ── Phase note ── */
+        .phase-note {
+            font-size: 12px; color: #54595d; margin-bottom: 8px;
+            padding: 4px 8px; background: #fefef0; border-right: 3px solid #c8b860;
+        }
+    </style>
+</head>
+<body>
+<div id="page-wrapper">
+
+    <!-- Header -->
+    <div id="site-header">
+        <div id="site-title">
+            <a href="https://sarvv.site">SARVV</a> — OSI Model
+            <span>مدل مرجع OSI · N10-009 · 1.1 · راهنمای کامل یادگیری</span>
+        </div>
+        <div id="site-tagline">
+            CompTIA Network+ N10-009 · Professor Messer · Section 1.1 · Understanding the OSI Model
+        </div>
+    </div>
+
+    <!-- Notice -->
+    <div id="notice-bar">
+        این راهنما بر اساس ویدیوی <strong>1.1 — Understanding the OSI Model</strong> از دوره رایگان Professor Messer است.
+        هر لایه را کلیک کنید تا جزئیات کامل، پروتکل‌ها، مثال‌های واقعی و نکات عیب‌یابی آن را ببینید.
+    </div>
+
+    <!-- Top Widgets -->
+    <div class="top-widgets">
+
+        <!-- TOC -->
+        <div id="toc">
+            <div id="toc-title">فهرست مطالب</div>
+            <ol>
+                <li><a href="#sec-layers">لایه‌های هفتگانه OSI</a></li>
+                <li><a href="#sec-packet">بررسی یک Packet واقعی</a></li>
+                <li><a href="#sec-cheatsheet">جدول مرجع سریع</a></li>
+                <li><a href="#sec-quiz">آزمون خودسنجی</a></li>
+            </ol>
+        </div>
+
+        <!-- What is OSI -->
+        <div class="info-box">
+            <div class="ib-title">مدل OSI چیست؟</div>
+            <div style="color:#54595d;font-size:12px;line-height:1.7;">
+                <strong>Open Systems Interconnection Reference Model</strong> — یک مدل مفهومی است که نحوه انتقال داده در شبکه را در <strong>۷ لایه</strong> توصیف می‌کند. این مدل یک زبان مشترک برای همه متخصصان IT است؛ وقتی کسی می‌گوید «مشکل Layer 1» یا «Layer 4 Port»، همه می‌دانند منظورش چیست.
+                <br><br>
+                اکثر پروتکل‌های امروزی بر اساس TCP/IP هستند، اما مدل OSI روی همه آن‌ها قابل اعمال است.
+            </div>
+        </div>
+
+        <!-- Mnemonic -->
+        <div id="mnemonic-box">
+            <div class="mb-title">🧠 میانبر حفظ لایه‌ها (بالا به پایین)</div>
+            <ul class="mnem-list" id="mnemList"></ul>
+            <div style="font-size:11px;color:#7a6400;margin-top:8px;">
+                💡 «<strong>All People Seem To Need Data Processing</strong>» — هر حرف اول، نام یک لایه است.
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- SECTION 1: THE 7 LAYERS                    -->
+    <!-- ═══════════════════════════════════════════ -->
+    <h2 class="section-heading" id="sec-layers">۱ — لایه‌های هفتگانه مدل OSI</h2>
+    <div class="phase-note">
+        🔑 هر لایه را کلیک کنید تا پروتکل‌ها، مثال‌های واقعی، نکات عیب‌یابی و یک تشبیه برای درک بهتر ببینید.
+    </div>
+    <div id="layerList"></div>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- SECTION 2: PACKET WALKTHROUGH              -->
+    <!-- ═══════════════════════════════════════════ -->
+    <h2 class="section-heading" id="sec-packet">۲ — بررسی یک Packet واقعی در Wireshark</h2>
+    <div class="phase-note">
+        📡 Professor Messer در این درس یک Frame واقعی Gmail/HTTPS را در Wireshark باز می‌کند. هر ردیف با یک لایه OSI مطابقت دارد. روی هر ردیف کلیک کنید تا هایلایت شود.
+    </div>
+    <table class="packet-table" id="packetTable">
+        <thead>
+            <tr>
+                <th class="p-num">Layer</th>
+                <th class="p-proto">Protocol</th>
+                <th class="p-detail">Detail در Wireshark</th>
+                <th class="p-badge">OSI Layer</th>
+            </tr>
+        </thead>
+        <tbody id="packetBody"></tbody>
+    </table>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- SECTION 3: CHEATSHEET                      -->
+    <!-- ═══════════════════════════════════════════ -->
+    <h2 class="section-heading" id="sec-cheatsheet">۳ — جدول مرجع سریع (Cheat Sheet)</h2>
+    <div class="phase-note">
+        📋 این جدول را قبل از آزمون مرور کنید. ستون PDU (واحد داده) و کلمات کلیدی عیب‌یابی مستقیماً در سوالات آزمون N10-009 ظاهر می‌شوند.
+    </div>
+    <div style="overflow-x:auto;">
+        <table class="cheat-table">
+            <thead>
+                <tr>
+                    <th class="ct-num">#</th>
+                    <th class="ct-name">نام لایه</th>
+                    <th>نام مستعار</th>
+                    <th>پروتکل‌های اصلی</th>
+                    <th>PDU</th>
+                    <th>دستگاه/فناوری</th>
+                    <th>کلمات کلیدی عیب‌یابی</th>
+                </tr>
+            </thead>
+            <tbody id="cheatBody"></tbody>
+        </table>
+    </div>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- SECTION 4: QUIZ                            -->
+    <!-- ═══════════════════════════════════════════ -->
+    <h2 class="section-heading" id="sec-quiz">۴ — آزمون خودسنجی</h2>
+    <div class="phase-note">
+        ✏️ این سوالات از نوع سوالاتی هستند که در آزمون N10-009 دیده می‌شوند. پاسخ دهید، سپس توضیح هر جواب را بخوانید.
+    </div>
+
+    <div id="quiz-section">
+        <div class="pbar-wrap"><div class="pbar-fill" id="quizBar" style="width:0%"></div></div>
+        <div class="quiz-progress-text" id="quizProgressText">سوال ۱ از ۸</div>
+        <div id="quizContent"></div>
+    </div>
+
+    <!-- Footer -->
+    <div id="page-footer">
+        محتوا بر اساس دوره رایگان
+        <a href="https://www.professormesser.com/network-plus/n10-009/n10-009-video/understanding-the-osi-model-n10-009/" target="_blank">Professor Messer N10-009 — 1.1 Understanding the OSI Model</a>
+        &nbsp;·&nbsp; <a href="https://sarvv.site">SARVV.SITE</a> &nbsp;·&nbsp; SARVV &nbsp;·&nbsp; ۱۴۰۵
+    </div>
+</div>
+
+<script>
+/* ═══════════════════════════════ DATA ═══════════════════════════════ */
+
+const LAYERS = [
+    {
+        num: 7, name: "Application", nameFa: "لایه اپلیکیشن",
+        color: "#c0392b", bgcolor: "#fde8e8",
+        subtitle: "USER INTERACTION — تعامل کاربر",
+        nickname: "The App Layer",
+        tags: ["HTTP", "HTTPS", "FTP", "DNS", "POP3", "SMTP"],
+        unit: "Data", device: "L7 Firewall, Proxy",
+        mnem: "All",
+        summary: "بالاترین لایه — آنچه روی صفحه می‌بینید. هر بار که با یک اپلیکیشن تحت شبکه تعامل می‌کنید، در Layer 7 هستید. HTTP، HTTPS، FTP، DNS، POP3، SMTP و هزاران پروتکل دیگر در این لایه کار می‌کنند.",
+        protocols: ["HTTP / HTTPS", "FTP / SFTP", "DNS", "POP3 / IMAP / SMTP", "SNMP", "Telnet / SSH"],
+        realWorld: ["مرورگر در حال نمایش یک وب‌سایت", "ایمیل‌کلاینت در حال ارسال پیام", "پخش ویدیو در Netflix", "درخواست DNS برای تبدیل نام به IP"],
+        troubleshoot: ["اپلیکیشن نمی‌تواند به سرور وصل شود", "خطاهای HTTP 404 یا 500", "خطای DNS Resolution", "Timeout اپلیکیشن"],
+        analogy: "جلوی فروشگاه — رابطی که مشتری (کاربر) با آن تعامل می‌کند. مشتری انبار پشت صحنه (لایه‌های پایین‌تر) را نمی‌بیند."
+    },
+    {
+        num: 6, name: "Presentation", nameFa: "لایه نمایش",
+        color: "#e67e22", bgcolor: "#fef3e2",
+        subtitle: "FORMAT & ENCRYPT — فرمت‌بندی و رمزنگاری",
+        nickname: "The Translator",
+        tags: ["SSL/TLS", "JPEG", "ASCII", "Unicode"],
+        unit: "Data", device: "—",
+        mnem: "People",
+        summary: "فرمت‌بندی داده، رمزنگاری و رمزگشایی. SSL/TLS در این لایه کار می‌کند. وقتی HTTPS داده‌های شما را رمز می‌کند، در Layer 6 اتفاق می‌افتد. اغلب همراه Layer 7 بررسی می‌شود.",
+        protocols: ["SSL / TLS", "JPEG / GIF / PNG", "ASCII / Unicode", "MPEG / MP4", "فشرده‌سازی (Compression)"],
+        realWorld: ["HTTPS رمزنگاری رمز عبور شما", "مرورگر در حال Decode کردن تصویر JPEG", "تبدیل encoding متن (UTF-8)", "Handshake گواهی SSL"],
+        troubleshoot: ["خطای گواهی SSL/TLS", "مشکل Character Encoding", "خرابی رمزگشایی", "نمایش داده خراب"],
+        analogy: "مترجم سازمان ملل — محتوا را به زبانی که طرف مقابل می‌فهمد ترجمه می‌کند. همچنین مسئول امنیت است."
+    },
+    {
+        num: 5, name: "Session", nameFa: "لایه Session",
+        color: "#f1c40f", bgcolor: "#fefde7",
+        subtitle: "START / MAINTAIN / END — مدیریت Session",
+        nickname: "The Gatekeeper",
+        tags: ["NetBIOS", "RPC", "SIP", "Tunnels"],
+        unit: "Data", device: "—",
+        mnem: "Seem",
+        summary: "چرخه عمر یک مکالمه را مدیریت می‌کند — ایجاد، نگهداری و پایان دادن به Session‌ها. پروتکل‌های کنترلی که اتصال را راه‌اندازی می‌کنند و تونل‌های VPN در این لایه هستند.",
+        protocols: ["NetBIOS", "RPC (Remote Procedure Call)", "PPTP / L2TP Tunneling", "SIP (VoIP Signaling)", "پروتکل‌های کنترلی"],
+        realWorld: ["راه‌اندازی یک مکالمه VoIP با SIP", "ورود به یک Remote Session", "برقراری تونل VPN", "Handshake احراز هویت"],
+        troubleshoot: ["Session Timeout", "عدم امکان برقراری اتصال", "خطای احراز هویت VPN", "قطع Session در میانه انتقال"],
+        analogy: "اپراتور تلفن که تماس را برقرار می‌کند، نگه می‌دارد و قطع می‌کند — اطمینان می‌دهد هر دو طرف آماده‌اند."
+    },
+    {
+        num: 4, name: "Transport", nameFa: "لایه Transport",
+        color: "#27ae60", bgcolor: "#e8f5e9",
+        subtitle: "END-TO-END DELIVERY — تحویل انتها به انتها",
+        nickname: "The Post Office",
+        tags: ["TCP", "UDP", "Ports"],
+        unit: "Segment", device: "Firewall, Load Balancer",
+        mnem: "To",
+        summary: "مسئول تحویل قابل‌اعتماد (TCP) یا سریع (UDP) از مبدا به مقصد. داده را به Segment تقسیم و در مقصد مونتاژ می‌کند. شماره Port‌ها در این لایه تعریف می‌شوند.",
+        protocols: ["TCP (Transmission Control Protocol)", "UDP (User Datagram Protocol)", "Port Numbers 0–65535", "Flow Control / Error Detection"],
+        realWorld: ["TCP دانلود فایل با تایید دریافت", "UDP پخش زنده ویدیو", "Port 443 برای HTTPS", "TCP Three-Way Handshake (SYN/SYN-ACK/ACK)"],
+        troubleshoot: ["Port در دسترس نیست", "Firewall پورت را بلاک کرده", "Packet Loss / انتقال کند", "Connection Refused"],
+        analogy: "اداره پست. TCP = پست سفارشی با رسید. UDP = پست معمولی سریع بدون تایید تحویل."
+    },
+    {
+        num: 3, name: "Network", nameFa: "لایه شبکه",
+        color: "#2980b9", bgcolor: "#e8f0fb",
+        subtitle: "ROUTING & IP — مسیریابی و آدرس‌دهی IP",
+        nickname: "The Routing Layer",
+        tags: ["IP", "ICMP", "OSPF", "BGP"],
+        unit: "Packet", device: "Router, L3 Switch",
+        mnem: "Need",
+        summary: "آدرس‌دهی منطقی (IP) و مسیریابی — پیدا کردن بهترین مسیر از طریق شبکه hop به hop. Router‌ها در این لایه کار می‌کنند و IP مقصد را برای تعیین گام بعدی می‌خوانند.",
+        protocols: ["IPv4 / IPv6", "ICMP (ping / traceroute)", "OSPF / BGP / RIP", "ARP", "IPSec"],
+        realWorld: ["Router بسته را از طریق اینترنت Forward می‌کند", "دستور ping و traceroute", "Subnet Mask و Routing Table", "NAT (Network Address Translation)"],
+        troubleshoot: ["تداخل آدرس IP", "Subnet Mask اشتباه", "Default Gateway تنظیم نشده", "خطای 'Destination host unreachable'"],
+        analogy: "GPS و شبکه جاده‌ها. آدرس IP مثل آدرس خیابانی است. Router مثل تقاطع — در هر نقطه تصمیم می‌گیرد کدام جاده."
+    },
+    {
+        num: 2, name: "Data Link", nameFa: "لایه Data Link",
+        color: "#8e44ad", bgcolor: "#f0e8fb",
+        subtitle: "MAC & SWITCHING — آدرس MAC و سوئیچینگ",
+        nickname: "The Switching Layer",
+        tags: ["MAC", "Ethernet", "802.11", "VLAN"],
+        unit: "Frame", device: "Switch, Bridge, NIC",
+        mnem: "Data",
+        summary: "ارتباط بین دو دستگاه در یک شبکه محلی با آدرس‌های MAC. سوئیچ‌ها در این لایه کار می‌کنند و Frame‌ها را بر اساس MAC مقصد Forward می‌کنند. Ethernet و Wi-Fi در این لایه هستند.",
+        protocols: ["Ethernet (IEEE 802.3)", "Wi-Fi (IEEE 802.11)", "MAC Addresses / EUI-48 / EUI-64", "VLANs (802.1Q)", "Spanning Tree Protocol (STP)"],
+        realWorld: ["سوئیچ شبکه Frame را Forward می‌کند", "فیلتر MAC Address در Wi-Fi", "تقسیم‌بندی VLAN", "آدرس EUI-48 روی کارت شبکه"],
+        troubleshoot: ["MAC Address تکراری", "پورت سوئیچ خراب", "پیکربندی اشتباه VLAN", "Loop در STP / Broadcast Storm"],
+        analogy: "پیک داخل یک ساختمان — شماره آپارتمان (MAC) را می‌داند و در همان طبقه تحویل می‌دهد بدون نیاز به آدرس خیابانی."
+    },
+    {
+        num: 1, name: "Physical", nameFa: "لایه فیزیکی",
+        color: "#7f8c8d", bgcolor: "#f0f0f0",
+        subtitle: "SIGNALS & MEDIA — سیگنال‌ها و رسانه",
+        nickname: "The Physical Layer",
+        tags: ["Cables", "Fiber", "RF", "Bits"],
+        unit: "Bit", device: "Hub, Repeater, Cable",
+        mnem: "Processing",
+        summary: "انتقال فیزیکی بیت‌ها — سیگنال الکتریکی روی مس، پالس نور روی فیبر، یا امواج رادیویی برای وایرلس. پروتکلی در این لایه وجود ندارد — فقط سیگنال فیزیکی.",
+        protocols: ["Cat5e / Cat6 / Cat6a مسی", "فیبر نوری (OM3, SM)", "Wi-Fi 2.4 / 5 GHz", "DSL / RS-232", "USB (لایه فیزیکی)"],
+        realWorld: ["کابل اترنت به پورت دیوار", "کابل‌کشی Backbone فیبر نوری", "سیگنال رادیویی Wi-Fi", "تست Loopback روی کابل"],
+        troubleshoot: ["چراغ Link روی سوئیچ خاموش", "کابل خراب یا آسیب‌دیده", "کابل بیش از حد طولانی", "تداخل رادیویی در وایرلس", "خرابی سخت‌افزاری NIC"],
+        analogy: "سطح جاده — نه GPS، نه ماشین، نه قوانین راهنمایی. فقط مواد فیزیکی که سیگنال از طریق آن‌ها جابجا می‌شود."
+    }
+];
+
+const PACKET_DATA = [
+    { layer:"1", color:"#7f8c8d", proto:"Frame 88", detail:"2,005 bytes on the wire · physical electrical signal", badge:"Layer 1 — Physical" },
+    { layer:"2", color:"#8e44ad", proto:"Ethernet II", detail:"Src MAC: aa:bb:cc:dd:ee:ff → Dst MAC: 11:22:33:44:55:66 · Type: IPv4", badge:"Layer 2 — Data Link" },
+    { layer:"3", color:"#2980b9", proto:"Internet Protocol v4", detail:"Src: 192.168.1.105 → Dst: 72.14.247.19 (googlemail.l.google.com)", badge:"Layer 3 — Network" },
+    { layer:"4", color:"#27ae60", proto:"TCP", detail:"Src Port: 54321 → Dst Port: 443 · Flags: [PSH, ACK] · Seq number tracking", badge:"Layer 4 — Transport" },
+    { layer:"5–7", color:"#c0392b", proto:"TLS / HTTPS / Gmail", detail:"TLS 1.3 · Encrypted payload · mail.google.com application data", badge:"Layers 5–6–7" }
+];
+
+const QUIZ = [
+    {
+        q: "You're troubleshooting a network issue and find a damaged Ethernet cable. Which OSI layer does this problem belong to?",
+        opts: ["Layer 2 — Data Link", "Layer 1 — Physical", "Layer 3 — Network", "Layer 4 — Transport"],
+        a: 1,
+        explain: "Physical media (cables, fiber, wireless signals) are Layer 1. A damaged cable is a classic Layer 1 problem. Troubleshooting here involves loopback tests, cable testers, and checking link lights."
+    },
+    {
+        q: "Network switches make forwarding decisions based on what type of address?",
+        opts: ["IP addresses", "Port numbers", "MAC addresses", "Domain names"],
+        a: 2,
+        explain: "Switches operate at Layer 2 (Data Link) and forward frames based on destination MAC addresses. This is why Layer 2 is called the 'switching layer'. Routers (Layer 3) use IP addresses."
+    },
+    {
+        q: "TCP and UDP port numbers are a feature of which OSI layer?",
+        opts: ["Layer 3 — Network", "Layer 2 — Data Link", "Layer 5 — Session", "Layer 4 — Transport"],
+        a: 3,
+        explain: "Port numbers are a Layer 4 (Transport) concept. TCP provides reliable, ordered delivery with acknowledgements. UDP is connectionless and faster. Both use port numbers to identify applications."
+    },
+    {
+        q: "SSL/TLS encryption used in HTTPS is associated with which OSI layer?",
+        opts: ["Layer 7 — Application", "Layer 4 — Transport", "Layer 6 — Presentation", "Layer 5 — Session"],
+        a: 2,
+        explain: "Layer 6 (Presentation) handles encryption, decryption, and data formatting — converting application data into an encrypted form for transmission and decrypting it on the receiving end."
+    },
+    {
+        q: "A router's job is to forward traffic by reading which piece of information?",
+        opts: ["MAC addresses", "Port numbers", "IP addresses", "Application protocols"],
+        a: 2,
+        explain: "Routers operate at Layer 3 (Network) and read destination IP addresses to consult their routing tables and determine the next hop toward the destination."
+    },
+    {
+        q: "What is the correct top-to-bottom order of the OSI model (Layer 7 → 1)?",
+        opts: [
+            "Application, Presentation, Session, Transport, Network, Data Link, Physical",
+            "Physical, Data Link, Network, Transport, Session, Presentation, Application",
+            "Application, Session, Presentation, Network, Transport, Data Link, Physical",
+            "Transport, Network, Session, Application, Physical, Data Link, Presentation"
+        ],
+        a: 0,
+        explain: "Top to bottom: Application (7), Presentation (6), Session (5), Transport (4), Network (3), Data Link (2), Physical (1). Mnemonic: 'All People Seem To Need Data Processing'."
+    },
+    {
+        q: "Which layer manages the start, maintenance, and termination of communication sessions?",
+        opts: ["Layer 4 — Transport", "Layer 3 — Network", "Layer 6 — Presentation", "Layer 5 — Session"],
+        a: 3,
+        explain: "Layer 5 (Session) manages the lifecycle of a connection. VPN tunnel establishment, VoIP call setup (SIP), and control protocols that open/close sessions operate at this layer."
+    },
+    {
+        q: "In Wireshark, you see 'Ethernet II' with source and destination MAC addresses. Which OSI layer does this represent?",
+        opts: ["Layer 1 — Physical", "Layer 3 — Network", "Layer 2 — Data Link", "Layer 4 — Transport"],
+        a: 2,
+        explain: "Ethernet frames with MAC addresses are Layer 2 (Data Link). In Professor Messer's Wireshark walkthrough, the 'Ethernet II' row is always Layer 2. The 'Internet Protocol' row above it is Layer 3."
+    }
+];
+
+/* ═══════════════════ MNEMONIC ═══════════════════ */
+const mnemWords  = ["All","People","Seem","To","Need","Data","Processing"];
+const mnemLayers = ["Application","Presentation","Session","Transport","Network","Data Link","Physical"];
+const mnemEl = document.getElementById('mnemList');
+mnemWords.forEach((w, i) => {
+    const li = document.createElement('li');
+    li.innerHTML = `
+        <span class="mnem-num">L${7-i}</span>
+        <span class="mnem-letter">${w[0]}</span>
+        <span class="mnem-word">${w.slice(1)}</span>
+        <span class="mnem-sep">→</span>
+        <span class="mnem-layer">${mnemLayers[i]}</span>
+    `;
+    mnemEl.appendChild(li);
+});
+
+/* ═══════════════════ LAYER LIST ═══════════════════ */
+const layerList = document.getElementById('layerList');
+LAYERS.forEach(layer => {
+    const wrap = document.createElement('div');
+
+    const head = document.createElement('div');
+    head.className = 'subsection-heading';
+    head.style.borderRightColor = layer.color;
+    head.innerHTML = `
+        <span>
+            <span class="layer-badge" style="color:${layer.color};border-color:${layer.color}">L${layer.num}</span>
+            ${layer.name} — ${layer.nameFa}
+            <span style="font-size:11px;color:#54595d;font-weight:normal;margin-right:10px;">(${layer.subtitle})</span>
+        </span>
+        <span class="expand-hint">جزئیات</span>
+    `;
+
+    const body = document.createElement('div');
+    body.className = 'layer-body';
+
+    body.innerHTML = `
+        <table class="data-table">
+            <tbody>
+                <tr>
+                    <td class="td-key">خلاصه</td>
+                    <td class="td-val">${layer.summary}</td>
+                </tr>
+                <tr>
+                    <td class="td-key">پروتکل‌ها و فناوری</td>
+                    <td class="td-val"><ul>${layer.protocols.map(p=>`<li>${p}</li>`).join('')}</ul></td>
+                </tr>
+                <tr>
+                    <td class="td-key">مثال‌های واقعی</td>
+                    <td class="td-val"><ul>${layer.realWorld.map(p=>`<li>${p}</li>`).join('')}</ul></td>
+                </tr>
+                <tr>
+                    <td class="td-key">نکات عیب‌یابی</td>
+                    <td class="td-val"><ul>${layer.troubleshoot.map(p=>`<li>${p}</li>`).join('')}</ul></td>
+                </tr>
+                <tr>
+                    <td class="td-key">واحد داده (PDU)</td>
+                    <td class="td-val"><strong>${layer.unit}</strong></td>
+                </tr>
+                <tr>
+                    <td class="td-key">دستگاه/فناوری</td>
+                    <td class="td-val">${layer.device}</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="analogy-box"><strong>🔁 تشبیه برای درک بهتر:</strong> ${layer.analogy}</div>
+    `;
+
+    head.addEventListener('click', () => {
+        const isOpen = body.classList.contains('open');
+        // close all
+        document.querySelectorAll('.layer-body.open').forEach(b => {
+            b.classList.remove('open');
+            b.previousSibling.classList.remove('open');
+        });
+        if (!isOpen) {
+            body.classList.add('open');
+            head.classList.add('open');
+        }
+    });
+
+    wrap.appendChild(head);
+    wrap.appendChild(body);
+    layerList.appendChild(wrap);
+});
+
+/* ═══════════════════ PACKET TABLE ═══════════════════ */
+const pBody = document.getElementById('packetBody');
+PACKET_DATA.forEach(row => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+        <td class="p-num" style="color:${row.color}">${row.layer}</td>
+        <td class="p-proto">${row.proto}</td>
+        <td class="p-detail">${row.detail}</td>
+        <td class="p-badge" style="color:${row.color}">${row.badge}</td>
+    `;
+    tr.onclick = () => {
+        document.querySelectorAll('#packetBody tr.hl').forEach(r => r.classList.remove('hl'));
+        tr.classList.toggle('hl');
+    };
+    pBody.appendChild(tr);
+});
+
+/* ═══════════════════ CHEATSHEET ═══════════════════ */
+const cBody = document.getElementById('cheatBody');
+LAYERS.forEach(layer => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+        <td class="ct-num" style="color:${layer.color}">${layer.num}</td>
+        <td class="ct-name">${layer.name}<br><span style="font-size:10px;color:#54595d;font-weight:normal;">${layer.nameFa}</span></td>
+        <td class="ct-mono">${layer.nickname}</td>
+        <td style="font-size:11px;">${layer.tags.join(', ')}</td>
+        <td class="ct-mono" style="color:${layer.color}">${layer.unit}</td>
+        <td style="font-size:11px;">${layer.device}</td>
+        <td>${layer.troubleshoot.slice(0,2).map(t=>`<span class="trouble-tag">${t}</span>`).join('')}</td>
+    `;
+    cBody.appendChild(tr);
+});
+
+/* ═══════════════════ QUIZ ═══════════════════ */
+let qIdx = 0, score = 0;
+
+function renderQuiz() {
+    const bar  = document.getElementById('quizBar');
+    const info = document.getElementById('quizProgressText');
+    const cont = document.getElementById('quizContent');
+    const pct  = Math.round((qIdx / QUIZ.length) * 100);
+    bar.style.width = pct + '%';
+
+    if (qIdx >= QUIZ.length) {
+        const p = Math.round((score / QUIZ.length) * 100);
+        const msg = p >= 80 ? "عالی! شما لایه‌های OSI را خوب می‌شناسید." :
+                    p >= 60 ? "خوب! لایه‌هایی که اشتباه کردید را مرور کنید." :
+                    "بیشتر مطالعه کنید — لایه‌ها را در قسمت بالا باز کنید و دوباره امتحان دهید.";
+        info.textContent = 'پایان آزمون';
+        bar.style.width = '100%';
+        cont.innerHTML = `
+            <div class="quiz-result">
+                <div class="score">${score}<span>/${QUIZ.length}</span></div>
+                <p>${msg}</p>
+                <button class="quiz-btn" onclick="resetQuiz()">دوباره امتحان کن</button>
+            </div>`;
+        return;
+    }
+
+    const q = QUIZ[qIdx];
+    info.textContent = `سوال ${qIdx+1} از ${QUIZ.length} — ${score} پاسخ صحیح`;
+    let answered = false;
+
+    cont.innerHTML = `
+        <div class="quiz-q-wrap">
+            <div class="quiz-q-num">QUESTION ${qIdx+1} / ${QUIZ.length}</div>
+            <div class="quiz-question">${q.q}</div>
+            <ul class="quiz-options" id="qOpts">
+                ${q.opts.map((o,i)=>`
+                <li>
+                    <label id="ql${i}" onclick="pick(${i})">
+                        <span class="opt-key">${String.fromCharCode(65+i)}.</span> ${o}
+                    </label>
+                </li>`).join('')}
+            </ul>
+            <div class="quiz-feedback" id="qFb"></div>
+            <button class="quiz-btn" id="qNext" onclick="nextQ()" disabled>
+                ${qIdx < QUIZ.length-1 ? 'سوال بعدی ←' : 'نتیجه نهایی ←'}
+            </button>
+        </div>
+    `;
+
+    window.pick = (i) => {
+        if (answered) return;
+        answered = true;
+        const fb = document.getElementById('qFb');
+        document.querySelectorAll('#qOpts label').forEach(l => l.style.pointerEvents = 'none');
+        if (i === q.a) {
+            score++;
+            document.getElementById('ql'+i).classList.add('correct');
+            fb.className = 'quiz-feedback show ok';
+            fb.innerHTML = `<strong>✓ درست.</strong> ${q.explain}`;
+        } else {
+            document.getElementById('ql'+i).classList.add('wrong');
+            document.getElementById('ql'+q.a).classList.add('show-correct');
+            fb.className = 'quiz-feedback show bad';
+            fb.innerHTML = `<strong>✗ اشتباه.</strong> ${q.explain}`;
+        }
+        document.getElementById('qNext').disabled = false;
+    };
+}
+
+window.nextQ = () => { qIdx++; renderQuiz(); };
+window.resetQuiz = () => { qIdx = 0; score = 0; renderQuiz(); };
+renderQuiz();
+</script>
+</body>
+</html>
